@@ -284,8 +284,7 @@ $(document).ready(function()
     <td class = "end_date">{{ Carbon\Carbon::parse($event -> end_date)->format('Y-m-d')}}</td>
     <td class="d-flex justify-content-center">
 
-<a href="#" class="btn btn-info mr-1 px-1 py-0"
-    target="blank"><i class="bi bi-printer"></i></a>
+
 
 <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit" data-target="#editEmployeeModal" data-toggle="modal"
 >
@@ -429,24 +428,24 @@ $(document).ready(function()
  </div>
  
 
- <script>
-// $(document).ready(function() {
+ <!-- <script>
+$(document).ready(function() {
 
-// $(document).on('click', '.editbtn', function() {
-//  var event_id = $(this).val();
-// //  alert(event_id)
-// $('#editEmployeeModal').modal('show');
-// $.ajax({
-// type: "Get",
-// url: "/edit-event/"+event_id,
-// success: function (response){
-//     console.log(response);
-// }
+$(document).on('click', '.editbtn', function() {
+ var event_id = $(this).val();
+//  alert(event_id)
+$('#editEmployeeModal').modal('show');
+$.ajax({
+type: "Get",
+url: "/edit-event/"+event_id,
+success: function (response){
+    console.log(response);
+}
 
-// });
+});
 
-//     });
-// });
+    });
+});
 $(document).on('click', '.edit', function() {
 var _this = $(this).parents('tr');
 $('#id').val(_this.find('.id').text());
@@ -455,5 +454,5 @@ $('#description').val(_this.find('.id').text());
 $('#start_date').val(_this.find('.id').text());
 $('#end_date').val(_this.find('.id').text());
 });
- </script>
+ </script> -->
 @endsection

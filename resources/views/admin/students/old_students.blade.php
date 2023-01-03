@@ -3,7 +3,7 @@
     Old Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'Old_Student'; ?>
+$submenu = '1st_year'; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -19,14 +19,13 @@ $submenu = 'Old_Student'; ?>
             </div>
             <div class="card-body table-responsive">
 
-                <table class="table table-bordered table-striped" id="example1">
+                <table class="table table-bordered table-striped" >
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Photo</th>
                             <th>Name</th>
                             <th>Group</th>
-                            <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
                             <th>More</th>
@@ -47,10 +46,7 @@ $submenu = 'Old_Student'; ?>
                                 </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->department }}</td>
-                                <td>
-                                    <div class="text-muted text-sm">Father: </div> {{ $item->fathers_name }}
-                                    <div class="text-muted text-sm">Mother: </div> {{ $item->mothers_name }}
-                                </td>
+                                
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->session }}</td>
 
@@ -58,9 +54,6 @@ $submenu = 'Old_Student'; ?>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
-
-                                        <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
-                                                class="bi bi-telephone"></i></a>
 
                                         <a href="mailto:{{ $item->email }}" class="btn btn-danger px-1 py-0"
                                             target="blank"><i class="bi bi-envelope"></i></a>
@@ -127,44 +120,23 @@ $submenu = 'Old_Student'; ?>
                                     <div class="form-group col-md-6">
                                         <label for=" department">Department</label>
                                         <select name="department" class="form-control">
-                                            <option value="Science">Science</option>
-                                            <option value="Humanities">Humanities</option>
-                                            <option value="Business">Business</option>
+                                            <option value="BSIS">BSIS</option>
+                                            <option value="BSAIS">BSAIS</option>
+                                            <option value="BSE">BSE</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" fathers_name">Father's name</label>
-                                        <input class="form-control @error('fathers_name') is-invalid @enderror"
-                                            type="text" name=" fathers_name" value="{{ old(' fathers_name') }}">
-                                        @error('fathers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" mothers_name">Mother's name</label>
-                                        <input class="form-control @error('mothers_name') is-invalid @enderror"
-                                            type="text" name=" mothers_name" value="{{ old(' mothers_name') }}">
-                                        @error('mothers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" c_class">Current Class</label>
                                         <select name="c_class" class="form-control">
-                                            <option value="XI">XI</option>
-                                            <option value="XII">XII</option>
-                                            <option value="HSC Examinee">HSC Examinee</option>
-                                            <option value="Old Student">Old Student</option>
+                                            <option value="1st Year">1st Year</option>
+                                            <option value="2nd Year">2nd Year</option>
+                                            <option value="3rd Year">3rd Year</option>
+                                            <option value="4th Year">4th Year</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -217,7 +189,7 @@ $submenu = 'Old_Student'; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" present_address">Present address</label>
                                         <input class="form-control @error('present_address') is-invalid @enderror"
@@ -240,9 +212,9 @@ $submenu = 'Old_Student'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" birth_reg_nid">NID / Birth certificate no.</label>
                                         <input class="form-control @error('birth_reg_nid') is-invalid @enderror"
@@ -263,9 +235,9 @@ $submenu = 'Old_Student'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_board">SSC board</label>
                                         <select name="ssc_board" class="form-control">
@@ -291,9 +263,9 @@ $submenu = 'Old_Student'; ?>
                                             <option value="Vocational">Vocational</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_school">SSC School</label>
                                         <input class="form-control @error('ssc_school') is-invalid @enderror"
@@ -314,9 +286,9 @@ $submenu = 'Old_Student'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_testimonial">SSC testimonial</label>
                                         <input class="form-control p-1" type="file" name=" ssc_testimonial">
@@ -325,7 +297,7 @@ $submenu = 'Old_Student'; ?>
                                         <label for=" ssc_marksheet">SSC marksheet</label>
                                         <input class="form-control p-1" type="file" name=" ssc_marksheet">
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="modal-footer">

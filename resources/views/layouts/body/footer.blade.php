@@ -1,6 +1,6 @@
 <footer style = "background-color: black;" id="footer">
 
-    <div class="footer-top">
+    <!-- <div class="footer-top">
       <div class="container">
         <div class="row">
 
@@ -47,7 +47,7 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container d-md-flex py-4">
 

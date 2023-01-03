@@ -191,7 +191,7 @@ class RoutineXIController extends Controller
                     'created_at' => Carbon::now()
                     
                                 ]);
-           $notify = ['message'=>'Event successfully Inserted!', 'alert-type'=>'success'];
+           $notify = ['message'=>'Announcement successfully Inserted!', 'alert-type'=>'success'];
                                 return redirect()->back()->with($notify);
                              }
         

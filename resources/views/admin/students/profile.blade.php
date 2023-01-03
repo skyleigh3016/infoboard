@@ -43,9 +43,9 @@ $submenu = $item->c_class; ?>
                             </li>
                         </ul>
 
-                        <a href="{{ route('admin.students.idcard.generate', $item->id) }}"
+                        <!-- <a href="{{ route('admin.students.idcard.generate', $item->id) }}"
                             class="btn btn-primary btn-block" target="blank"><i class="bi bi-person-badge"></i>
-                            Generate ID Card</a>
+                            Generate ID Card</a> -->
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -72,12 +72,7 @@ $submenu = $item->c_class; ?>
                             <div class="active tab-pane" id="information">
                                 <!-- Post -->
                                 <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item border-top-0">
-                                        <b>Father's name</b> <a class="float-right">{{ $item->fathers_name }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Mother's name</b> <a class="float-right">{{ $item->mothers_name }}</a>
-                                    </li>
+                                 
                                     <li class="list-group-item">
                                         <b>Gender</b> <a class="float-right">{{ $item->gender }}</a>
                                     </li>
@@ -85,12 +80,7 @@ $submenu = $item->c_class; ?>
                                         <b>Date of birth</b> <a
                                             class="float-right">{{ date('d F, Y', strtotime($item->dob)) }}</a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Present address</b> <a class="float-right">{{ $item->present_address }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Permanent address</b> <a class="float-right">{{ $item->permanent_address }}</a>
-                                    </li>
+                                  
                                    
                                     <li class="list-group-item">
                                         <b>Email</b> <a class="float-right">{{ $item->email }}</a>
@@ -175,28 +165,7 @@ $submenu = $item->c_class; ?>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for=" fathers_name">Father's name</label>
-                                            <input class="form-control @error('fathers_name') is-invalid @enderror"
-                                                type="text" name=" fathers_name" value="{{ $item->fathers_name }}">
-                                            @error('fathers_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for=" mothers_name">Mother's name</label>
-                                            <input class="form-control @error('mothers_name') is-invalid @enderror"
-                                                type="text" name=" mothers_name" value="{{ $item->mothers_name }}">
-                                            @error('mothers_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                  
 
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -270,30 +239,7 @@ $submenu = $item->c_class; ?>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for=" present_address">Present address</label>
-                                            <input class="form-control @error('present_address') is-invalid @enderror"
-                                                type="text" name=" present_address"
-                                                value="{{ $item->present_address }}">
-                                            @error('present_address')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for=" permanent_address">Permanent address</label>
-                                            <input class="form-control @error('permanent_address') is-invalid @enderror"
-                                                type="text" name=" permanent_address"
-                                                value="{{ $item->permanent_address }}">
-                                            @error('permanent_address')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                   
                                     <div class="d-flex justify-content-end mt-2">
                                         <button type="submit" class="btn  btn-primary"><i
                                                 class="bi bi-check2-square"></i>

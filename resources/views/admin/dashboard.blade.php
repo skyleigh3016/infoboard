@@ -30,7 +30,7 @@ $submenu = ''; ?>
                     <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Current Teachers</span>
+                        <span class="info-box-text">CMDI Staff</span>
                         <span class="info-box-number">{{ $teachers->count() }}</span>
                     </div>
                     <!-- /.info-box-content -->

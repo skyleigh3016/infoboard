@@ -38,14 +38,14 @@
                 </li>
 
                  <li class="nav-item @if ($menu == 'Users') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'Users') active @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Admin & Users') active @endif">
                     <i class="nav-icon fas fa-user-plus"></i>
                         <p> User Management <i class="fas fa-angle-left right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
                             <a href="{{ route('admin.index') }}"
-                                class="nav-link @if ($submenu == 'role') active @endif">
+                                class="nav-link @if ($submenu == 'admin') active @endif">
                                 <i class="bi bi-person-check-fill"></i>
                                 <p>admins</p>
                             </a>
@@ -113,7 +113,8 @@
                 <li class="nav-item">
                     <a href="{{ route('admission.index') }}"
                         class="nav-link @if ($submenu == 'video') active @endif">
-                        <i class="far fa-dot-circle nav-icon"></i>
+                        <i class="bi bi-camera-reels-fill"></i>
+                        <!-- <i class="fa-duotone fa-video"></i> -->
                         <p> Learning </p>
                     </a>
                 </li>
@@ -133,21 +134,21 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('students_xi.index') }}"
-                                class="nav-link @if ($submenu == 'XI') active @endif">
+                                class="nav-link @if ($submenu == '4th_year') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>4th Year</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('students_xii.index') }}"
-                                class="nav-link @if ($submenu == 'XII') active @endif">
+                                class="nav-link @if ($submenu == '3rd_year') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>3rd Year</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('hsc_examinee.index') }}"
-                                class="nav-link @if ($submenu == 'HSC_Examinee') active @endif">
+                                class="nav-link @if ($submenu == '2nd_year') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>2nd Year</p>
                             </a>
@@ -155,7 +156,7 @@
                        
                         <li class="nav-item">
                             <a href="{{ route('students_old.index') }}"
-                                class="nav-link @if ($submenu == 'Old_Student') active @endif">
+                                class="nav-link @if ($submenu == '1st_year') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>1st Year</p>
                             </a>
@@ -189,14 +190,14 @@
                 <li class="nav-item @if ($menu == 'Teachers') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Teachers') active @endif">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                        <p> Teachers <i class="fas fa-angle-left right"></i> </p>
+                        <p> CMDI Staff <i class="fas fa-angle-left right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('teachers.index') }}"
                                 class="nav-link @if ($submenu == 'All_Teachers') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>All teachers</p>
+                                <p>All Staff</p>
                             </a>
                         </li>
                         {{-- <li class="nav-item">
@@ -210,25 +211,25 @@
                             <a href="{{ route('admin.teachers-science') }}"
                                 class="nav-link @if ($submenu == 'Science') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Science</p>
+                                <p>Faculty</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.teachers-humanities') }}"
                                 class="nav-link @if ($submenu == 'Humanities') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Humanities</p>
+                                <p>OSAS</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.teachers-business') }}"
                                 class="nav-link @if ($submenu == 'Business') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Business</p>
+                                <p>Registrar</p>
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> 
 
                 <!-- <li class="nav-item @if ($menu == 'Admission') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Admission') active @endif">
@@ -251,7 +252,7 @@
                             </a>
                         </li>
                     </ul>
-                </li> -->
+                </li>
 
                 <!-- <li class="nav-header">others</li>
 

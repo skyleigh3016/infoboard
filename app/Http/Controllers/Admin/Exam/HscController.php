@@ -116,8 +116,14 @@ class HscController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id', $id)->delete();
+
+        $notify = ['message'=>'Users deleted successfully!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
     }
+
+  
 }

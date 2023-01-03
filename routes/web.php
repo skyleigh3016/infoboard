@@ -40,6 +40,7 @@ use App\Http\Controllers\InfoboardController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UsersRoleController;
+use App\Http\Controllers\LearningController;
 
 
 /*
@@ -52,9 +53,9 @@ use App\Http\Controllers\UsersRoleController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
 
 
 Route::get('/', function () {
@@ -174,7 +175,7 @@ Route::group(['middleware' => 'admin'], function() {
 // Route::get('/infoboard/home', [InfoboardController::class, 'infoboard'])->name('infoboard.home');
 Route::get('/infoboard/home', function () {
     return view('infoboard.infoboard');
-})->name('infoboard.home');
+})->name('infoboard/home');
 
 //final event calendar
 Route::get('/calendar/event', [CalendarController::class, 'calendar'])->name('calendar.event');
@@ -193,21 +194,27 @@ Route::get('/announcement/edit/{id}', [AnnouncementController::class, 'edit']);
 Route::put('/announcement/update/{id}', [AnnouncementController::class, 'update']);
 Route::get('/announcement/destroy/{id}', [AnnouncementController::class, 'delete']);
 Route::get('/announcement', [AnnouncementController::class, 'show']);
-Route::post('/update/announcement/{id}', [NoticeController::class, 'UpdateAnnouncement'])->name('update.announcement');
+Route::post('/update/announcement', [NoticeController::class, 'UpdateAnnouncement'])->name('update.announcement');
 
 
 
 //admin learning route
 Route::get('/home/learning', [LearningController::class, 'index'])->name('home.learning');
 Route::get('/learning/create', [LearningController::class, 'create']);
-Route::post('/learning/insert', [AdmissionController::class, 'insert'])->name('insert.video');
+Route::post('/learning/insert', [AdmissionController::class, 'ilagay'])->name('insert.video');
 Route::get('/learning/edit/{id}', [LearningController::class, 'edit']);
 Route::post('/learning/update/{id}', [AdmissionController::class, 'UpdateLearning'])->name('update.learning');
 Route::get('/learning/destroy/{id}', [LearningController::class, 'delete']);
-Route::get('/learning', [LearningController::class, 'show']);
+Route::get('/learningvideo', [LearningController::class, 'show']);
 
 //admin Users route
 Route::get('/admin/user', [UsersRoleController::class, 'index'])->name('users.index');
 Route::get('/admin/user/role', [UsersRoleController::class, 'role'])->name('role.index');
 Route::get('/admin/user/admin', [UsersRoleController::class, 'admin'])->name('admin.index');
 Route::post('/admin/insert/admin', [UsersRoleController::class, 'AdminInsert'])->name('admin.insert');
+
+Route::get('/admin/edit/{id}', [UsersRoleController::class, 'EditAdmin'])->name('admin.edit');
+Route::post('/update/admin', [UsersRoleController::class, 'UpdateAdmin'])->name('update.admin');
+Route::post('/admin/insert/user', [UsersRoleController::class, 'UserInsert'])->name('user.insert');
+Route::get('/user/edit/{id}', [UsersRoleController::class, 'EditUser'])->name('user.edit');
+Route::post('/update/user', [UsersRoleController::class, 'UpdateUser'])->name('update.user');

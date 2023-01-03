@@ -16,13 +16,11 @@
                   
                 </div>
             <ul>
-            <li class="li" id="li"><a id="a2" class="{{ (request()->is('/')) ? 'active' : '' }}" href="{{ route('infoboard.home') }}">home</a></li>
-                <li class="li" id="li"><a id="a2" class="{{ (request()->is('announcement')) ? 'active' : '' }}" href="{{url('/announcement')}}">announcement</a></li>
-                <li class="li" id="li"><a id="a2" class="{{ (request()->is('calendar/event')) ? 'active' : '' }}" href="{{url('/calendar/event')}}">Event-Calendar</a></li>
-                
-                    <li class="li" id="li"><a id="a3" class="{{ (request()->is('videos')) ? 'active' : '' }}" href="videos" href="videos">Learning</a></li>
-                    
-                    <li class="li" id="li"><a id="a2" class="{{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('welcome') }}"  style="color:orange">Login</a></li>
-                 </ul>   
+                <li class="li" id="li"><a id="a2" class="{{ (request()->is('infoboard/home')) ? 'active' : '' }}"style="text-decoration: none" href="{{ route('infoboard/home') }}">home</a></li>
+                <li class="li" id="li"><a id="a2" class="{{ (request()->is('announcement')) ? 'active' : '' }}" style="text-decoration: none" href="{{url('/announcement')}}">announcement</a></li>
+                <li class="li" id="li"><a id="a2" class="{{ (request()->is('calendar/event')) ? 'active' : '' }}"style="text-decoration: none" href="{{url('/calendar/event')}}">Event-Calendar</a></li>
+                <li class="li" id="li"><a id="a3" class="{{ (request()->is('learningvideo')) ? 'active' : '' }}"style="text-decoration: none" href="{{url('/learningvideo')}}">Learning</a></li>
+                <li class="li" id="li"><a id="a2" class="{{ (request()->is('login')) ? 'active' : '' }}" style="text-decoration: none; color:orange"href="{{ route('welcome') }}">Login</a></li>
+            </ul>   
        
         </nav>

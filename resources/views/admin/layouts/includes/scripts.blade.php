@@ -343,7 +343,7 @@ var _this = $(this).parents('tr');
 $('#id').val(_this.find('.id').text());
 $('#title').val(_this.find('.title').text());
 $('#description').val(_this.find('.description').text());
-$('#image').val(_this.find('.image').text());
+$('#image').val(_this.find('.image').file());
 });
  </script>
 

@@ -2,8 +2,8 @@
 @section('title')
     Notices
 @endsection
-<?php $menu = 'Users';
-$submenu = 'role'; ?>
+<?php $menu = 'Admin & Users';
+$submenu = 'admin'; ?>
 
 @section('content')
    
@@ -264,7 +264,7 @@ $(document).ready(function()
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" width="5%">id</th>
+                        <th scope="col" width="5%" hidden >id</th>
                         <th scope="col" width="20%">Name</th>
                         <th scope="col" width="35%">Email</th>
                         <th scope="col" width="30%">Role</th>
@@ -274,20 +274,22 @@ $(document).ready(function()
                 <tbody>
                 @foreach($admins as $admin)
                     <tr>
-    <td class = "id">{{ $admin -> id }}</td>
+    <td class = "id" hidden >{{ $admin -> id }}</td>
     <td class = "name">{{ $admin -> name }}</td>
     <td class = "email">{{ $admin -> email }}</td>
     <td class = "role">{{ $admin -> role }}</td>
     
     <td class="d-flex justify-content-center">
+<a href="{{url('admin/edit/'.$admin->id)}}" class="btn btn-primary mr-1 px-1 py-0 "><i class="bi bi-pencil-square"  data-toggle="tooltip"></i></a>
+    <!-- <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit3" data-target="#editEmployeeModal" data-toggle="modal"
+>
+    <i class="bi bi-pencil-square" data-toggle="tooltip" data-idUpdate = "'$admin->id'"></i>
+</button> -->
 
-<a href="#" class="btn btn-info mr-1 px-1 py-0"
-    target="blank"><i class="bi bi-printer"></i></a>
-
-<button type="button" class="btn btn-primary mr-1 px-1 py-0 edit3" data-bs-target="{{ '#editEmployeeModal' . $admin->id }}" data-target="#editEmployeeModal" data-toggle="modal"
+<!-- <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit3" data-bs-target="{{ '#editEmployeeModal' . $admin->id }}" data-target="#editEmployeeModal" data-toggle="modal"
 >
     <i class="bi bi-pencil-square" data-toggle="tooltip" ></i>
-</button>
+</button> -->
 <!-- noticecontroller the logic to delete -->
 <form action="{{ route('routines_xii.destroy', $admin->id) }}" method="post">
     @csrf
@@ -353,45 +355,7 @@ $(document).ready(function()
  </div>
 
  <!-- edit Modal HTML  -->
- <div id="editEmployeeModal" class="modal fade">
-  <div class="modal-dialog modal-dialog-scrollable">
-   <div class="modal-content">
-   <form action="{{route('update.announcement', $admin->id)}}" method="POST" enctype="multipart/form-data">
-    @csrf  
-    
-    <input type="text" hidden id = "id" name = "id" value = ""> 
-
-     <div class="modal-header popupheader">      
-      <h4 class="modal-title">Update User</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-     </div>
-     <div class="modal-body">     
-      <div class="form-group">
-       <label>Name</label>
-       <input type="text" name ="name" id ="name" class="form-control" required>
-      </div>
-      <div class="form-group">
-       <label>Email</label>
-       <textarea class="form-control" name ="email" id ="email" required></textarea>
-      </div>
-     
-      
-      <div class="form-group">
-       <label>Role</label>
-       <input type="text" name ="role" id ="role" class="form-control" >
-      </div>  
-     </div>
-
-     
-     
-     <div class="modal-footer">
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-      <input type="submit" class="btn btn-success" value="Update">
-     </div>
-    </form>
-   </div>
-  </div>
- </div>
+ 
  
 
 @endsection

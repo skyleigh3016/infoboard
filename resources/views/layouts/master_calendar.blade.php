@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,6 +22,8 @@
   <!--norman welcome-css links-->
 <link href="{{ asset('frontend/assets/css/welcome.css')}}" rel="stylesheet">
 <style>
+
+  
 .modal-body{
   height:350px;
   overflow:hidden;
@@ -126,10 +128,10 @@ p {
    
        
             <div class="col-12">
-                <h3 class="text-center mt-5">2022-2023 CMDI EVENT CALENDAR</h3>
+           
                 <div class="col-md-11 offset-1 mt-5 mb-5">
 
-                    <div id="calendar">
+                    <div style = "display:center;  padding-top: 5px; padding-right: 80px; padding-bottom: 5px; padding-left: 5px;" id="calendar">
 
                     </div>
 

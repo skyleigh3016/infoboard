@@ -1,10 +1,10 @@
 {{-- Left side list --}}
 <div class="list-group list-group-light mb-4">
-    <a href="{{ route('notice.view') }}" class="list-group-item list-group-item-action px-3 border-0">
+    <!-- <a href="{{ route('notice.view') }}" class="list-group-item list-group-item-action px-3 border-0">
         <i class="bi bi-megaphone-fill fa-lg text-primary me-3"></i> Official Announcement</a>
 
     <a href="{{ route('routines') }}" class="list-group-item list-group-item-action px-3 border-0">
-        <i class="fas fa-calendar-alt fa-lg text-info me-3"></i> School Event</a>
+        <i class="fas fa-calendar-alt fa-lg text-info me-3"></i> School Event</a> -->
 
     <a href="{{ route('videos') }}" class="list-group-item list-group-item-action px-3 border-0">
         <i class="fas fa-video fa-lg text-danger me-3"></i> Videos</a>

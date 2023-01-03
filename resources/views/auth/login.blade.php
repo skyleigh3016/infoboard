@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ asset('showhidepassword/main.css') }}">
         <x-slot name="logo">
             <a href="/">
-                <img class="" src="{{ asset('images/logos/logo.png') }}" alt="Theme-Logo" style="width: 170px" />
+                <img class="" src="{{ asset('images/logos/cmdilogo.jpg') }}" alt="Theme-Logo" style="width: 140px" />
                 {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
             </a>
         </x-slot>
@@ -30,12 +30,12 @@
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-input id="password" class="form-control py-2  @error('password') is-invalid @enderror" type="password" name="password" required
                     autocomplete="current-password" />
-                    <button type="button" id="show-passwd">
-						<img src="{{ asset('showhidepassword/eye_open.svg') }./eye_open.svg" alt="Show Password" />
-					</button>
+                  
             </div>
+
+            
 
             <!-- Remember Me -->
             <div class="block mt-4">
@@ -60,6 +60,22 @@
                 </x-button>
             </div>
         </form>
+
+        <script>
+  const show_pw_btn = document.querySelector('#show-passwd')
+const show_pw_icon = show_pw_btn.querySelector('img')
+const pw_input = document.querySelector('#password')
+
+show_pw_btn.addEventListener('click', () => {
+	pw_input.type = pw_input.type === 'password' 
+		? 'text' 
+		: 'password'
+
+	show_pw_icon.src = show_pw_icon.src.includes('open') 
+		? 'eye_closed.svg' 
+		: 'eye_open.svg'
+})
+</script>
         <script src="{{ asset('showhidepassword/main.js') }}"></script>
     </x-auth-card>
 </x-guest-layout>

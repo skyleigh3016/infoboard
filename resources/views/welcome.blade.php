@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="d-flex align-items-center justify-content-end mb-3">
-                    <a class="btn btn-secondary" href="{{ route('infoboard.home') }}"><i
+                    <a class="btn btn-secondary" href="{{ route('infoboard/home') }}"><i
                             class="fas fa-user-edit"></i> InfoBoard Home</a>
                     @auth
                         <a class="btn btn-primary ms-2" href="{{ route('home') }}"><i class="fas fa-home"></i>
@@ -114,7 +114,7 @@ class="form-control py-2  @error('password') is-invalid @enderror"
     <footer class="py-3 mt-5">
         <div class="container">
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('images/logos/cardbank1.png') }}" alt="" style="height: 45px">
+                <img src="{{ asset('images/logos/cardleasingfinanace.jpg') }}" alt="" style="height: 45px">
                 <img class="ms-4" src="{{ asset('images/logos/card_ink.png') }}" alt="" style="height: 45px">
                 <img class="ms-4" src="{{ asset('images/logos/SME-logo.png') }}" alt=""
                     style="height: 45px">

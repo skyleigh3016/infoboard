@@ -15,7 +15,7 @@ class OldStudentsController extends Controller
      */
     public function index()
     {
-        $student = DB::table('students')->where('c_class', 'Old_Student')->get();
+        $student = DB::table('students')->where('c_class', '1st Year')->get();
 
         return view('admin.students.old_students', compact('student'));
     }

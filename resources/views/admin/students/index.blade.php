@@ -19,14 +19,13 @@ $submenu = 'Students'; ?>
             </div>
             <div class="card-body table-responsive">
 
-                <table class="table table-bordered table-striped" id="example1">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Photo</th>
                             <th>Name</th>
                             <th>Course</th>
-                            <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
                             <th>More</th>
@@ -47,10 +46,8 @@ $submenu = 'Students'; ?>
                                 </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->department }}</td>
-                                <td>
-                                    <div class="text-muted text-sm">Father: </div> {{ $item->fathers_name }}
-                                    <div class="text-muted text-sm">Mother: </div> {{ $item->mothers_name }}
-                                </td>
+                              
+
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->session }}</td>
 
@@ -59,8 +56,6 @@ $submenu = 'Students'; ?>
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-                                        <a href="#" class="btn btn-success mr-1 px-1 py-0"><i
-                                                class="bi bi-telephone"></i></a>
 
                                         <a href="#" class="btn btn-danger px-1 py-0"
                                             target="blank"><i class="bi bi-envelope"></i></a>
@@ -139,28 +134,7 @@ $submenu = 'Students'; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" fathers_name">Father's name</label>
-                                        <input class="form-control @error('fathers_name') is-invalid @enderror"
-                                            type="text" name=" fathers_name" value="{{ old(' fathers_name') }}">
-                                        @error('fathers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" mothers_name">Mother's name</label>
-                                        <input class="form-control @error('mothers_name') is-invalid @enderror"
-                                            type="text" name=" mothers_name" value="{{ old(' mothers_name') }}">
-                                        @error('mothers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                                
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
@@ -222,31 +196,7 @@ $submenu = 'Students'; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" present_address">Present address</label>
-                                        <input class="form-control @error('present_address') is-invalid @enderror"
-                                            type="text" name=" present_address"
-                                            value="{{ old(' present_address') }}">
-                                        @error('present_address')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" permanent_address">Permanent address</label>
-                                        <input class="form-control @error('permanent_address') is-invalid @enderror"
-                                            type="text" name=" permanent_address"
-                                            value="{{ old(' permanent_address') }}">
-                                        @error('permanent_address')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
+                               
 
                             </div>
                             <div class="modal-footer">

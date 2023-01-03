@@ -52,7 +52,7 @@ class AnnouncementController extends Controller
     {
 
         $announcements= Announcement::find($id);
-        return view('admin.announcement.edit',compact('announcements'));
+        return view('admin.notices.edit',compact('announcements'));
             
     }
     public function update(Request $request ,$id) 

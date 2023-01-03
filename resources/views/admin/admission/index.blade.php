@@ -282,8 +282,7 @@ $(document).ready(function()
                             <td>
     <td class="d-flex justify-content-center">
 
-<a href="#" class="btn btn-info mr-1 px-1 py-0"
-    target="blank"><i class="bi bi-printer"></i></a>
+
 
 <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit2" data-bs-target="{{ '#editEmployeeModal' . $learning->id }}" data-target="#editEmployeeModal" data-toggle="modal"
 >

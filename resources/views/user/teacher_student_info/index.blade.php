@@ -50,7 +50,7 @@ $menu = 't_s_info';
                                 <h5>Teachers information</h5>
                             </div>
                             <div class="card-body table-responsive">
-                                <table id="tcr_info_table" class="table table-striped" style="width:100%">
+                                <table  class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -68,8 +68,7 @@ $menu = 't_s_info';
                                                 <td>{{ $item->department }}</td>
                                                 <td>{{ $item->subject }}</td>
                                                 <td class="d-flex justify-content-center">
-                                                    <a class="btn btn-success px-1 py-0 mx-1 shadow-0"
-                                                        href="tel:{{ $item->phone }}"><i class="fas fa-phone"></i></a>
+                                                    
                                                     <a class="btn btn-danger px-1 py-0 mx-1 shadow-0"
                                                         href="mailto:{{ $item->email }}"><i
                                                             class="fas fa-envelope"></i></a>
@@ -91,7 +90,7 @@ $menu = 't_s_info';
                                 <h5>Students information</h5>
                             </div>
                             <div class="card-body">
-                                <table id="st_info_table" class="table table-striped" style="width:100%">
+                                <table  class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>

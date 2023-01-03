@@ -123,15 +123,12 @@ class NoticeController extends Controller
         return redirect()->back()->with($notify);
     }
 
-    public function UpdateAnnouncement(Request $request , $id) 
+
+
+    public function UpdateAnnouncement(Request $request) 
     {
 
-        $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-        ]);
+       
 
         
         $image = $request->file('image');
@@ -144,23 +141,29 @@ class NoticeController extends Controller
             $last_img = $up_location.$img_name;
             $image->move($up_location,$img_name);
 
-
-        Announcement::find($id)->update([
-        'title' => $request->title,
+            $update = [
+                'title' => $request->title,
         'description' => $request->description,
         'image' =>  $last_img,
         'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('announcements')->where('id',$request->id)->update($update);
+           
 
-            ]);
+        
 
         }else{
 
-         Announcement::find($id)->update([
-        'title' => $request->title,
-        'description' => $request->description,
-        'updated_at' => Carbon::now()
-        
-                    ]);
+            $update = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('announcements')->where('id',$request->id)->update($update);
+
+      
         
         }
         $notify = ['message'=>'Announcements successfully Updated!', 'alert-type'=>'success'];
@@ -178,7 +181,7 @@ class NoticeController extends Controller
     {
         DB::table('bookings')->where('id', $id)->delete();
 
-        $notify = ['message'=>'Notice deleted successfully!', 'alert-type'=>'success'];
+        $notify = ['message'=>'Event deleted successfully!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
     }
 

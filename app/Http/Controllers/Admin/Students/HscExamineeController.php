@@ -16,7 +16,7 @@ class HscExamineeController extends Controller
     public function index()
     {
         $student = DB::table('students')
-                ->where('c_class', 'HSC_Examinee')
+                ->where('c_class', '2nd Year')
                 ->get();
 
         return view('admin.students.hsc_examinee', compact('student'));

@@ -14,13 +14,13 @@ class HomeController extends Controller
 
         $users = DB::table('users')->orderby('id', 'desc')->get();
         $posts = DB::table('posts')->get();
-        $students = DB::table('students')->where('c_class', 'XI')->orwhere('c_class', 'XII')->orwhere('c_class', 'HSC_Examinee')->get();
+        $students = DB::table('students')->where('c_class', '4th Year')->orwhere('c_class', '3rd Year')->orwhere('c_class', '2nd Year')->orwhere('c_class', '1st Year')->get();
         $teachers = DB::table('teachers')->get();
         $public_post = DB::table('posts')->where('visibility', 1)->get();
         $private_post = DB::table('posts')->where('visibility', 0)->get();
-        $xi_students = DB::table('students')->where('c_class', 'XI')->get();
-        $xii_students = DB::table('students')->where('c_class', 'XII')->get();
-        $hsc_students = DB::table('students')->where('c_class', 'HSC_Examinee')->get();
+        $xi_students = DB::table('students')->where('c_class', '4th Year')->get();
+        $xii_students = DB::table('students')->where('c_class', '3rd Year')->get();
+        $hsc_students = DB::table('students')->where('c_class', '2nd Year')->get();
 
         return view('admin.dashboard', compact('users', 'posts', 'students', 'teachers', 'public_post', 'private_post', 'xi_students', 'xii_students', 'hsc_students'));
     }

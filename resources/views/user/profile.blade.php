@@ -97,7 +97,7 @@ $cmnts_cnt = DB::table('post_comments')
             </div>
 
             @if (Auth::user()->id == $user->id)
-                <div class="card mt-4">
+                <!-- <div class="card mt-4">
                     <div class="card-header">
                         <h5>Exam Results</h5>
                     </div>
@@ -109,7 +109,7 @@ $cmnts_cnt = DB::table('post_comments')
                                 class="fas fa-hourglass-half"></i> View My Exam
                             Results</button>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Result Modal -->
                 <div class="modal fade" id="examModal" tabindex="-1" aria-labelledby="exampleModalLabel"

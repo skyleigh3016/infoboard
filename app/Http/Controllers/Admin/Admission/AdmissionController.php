@@ -240,30 +240,37 @@ class AdmissionController extends Controller
     {
         DB::table('learnings')->where('id', $id)->delete();
 
-        $notify = ['message'=>'Notice deleted successfully!', 'alert-type'=>'success'];
+        $notify = ['message'=>'Learning Video deleted successfully!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
     }
-    public function insert(Request $request)
+    public function ilagay(Request $request)
     {
        $request->validate([
             'title'=>'required',
             'description'=>'required',
             'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
        ]);
-
-       $file=$request->file('video');
-       $file->move('learning',$file->getClientOriginalName());
-       $file_name=$file->getClientOriginalName();
-       $last_vid =  'learning/'.$file_name;
+       
+    
+       $video = $request->file('video');
+        
+       $name_gen = hexdec(uniqid());
+       $img_ext = strtolower($video->getClientOriginalExtension());
+       $img_name = $name_gen. '.' .$img_ext;
+       $up_location = 'learning';
+       $last_vid = $up_location.$img_name;
+       $video->move($up_location,$img_name);
 
        Learning::insert([
         'title' => $request->title,
         'description' => $request->description,
         'video' => $last_vid,
         'created_at' => Carbon::now()
-         ]);
-         $notify = ['message'=>'Learnings successfully Updated!', 'alert-type'=>'success'];
-         return redirect()->back()->with($notify);
+                       ]);
+  $notify = ['message'=>'Learnings successfully Inserted!', 'alert-type'=>'success'];
+                       return redirect()->back()->with($notify);
+
+      
     }
 
     public function UpdateLearning(Request $request , $id) 
@@ -304,7 +311,7 @@ class AdmissionController extends Controller
         }
 
       
-        $notify = ['message'=>'Announcements successfully Updated!', 'alert-type'=>'success'];
+        $notify = ['message'=>'Learning successfully Updated!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
     }
 

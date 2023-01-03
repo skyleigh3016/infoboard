@@ -44,7 +44,7 @@ class CommentsController extends Controller
             'post_id' => $request->post_id,
             'user_id' => Auth::user()->id,
             'comment' => $request->comment,
-            'c_date' => now('6.0').date(''),
+            'c_date' => now('8').date(''),
         ];
 
         DB::table('post_comments')->insert($data);

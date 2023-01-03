@@ -264,7 +264,7 @@ $(document).ready(function()
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" width="5%">id</th>
+                        <th scope="col" width="5%" hidden>id</th>
                         <th scope="col" width="20%">Title</th>
                         <th scope="col" width="50%">Description</th>
                         <th scope="col" width="15%">Images</th>
@@ -274,20 +274,26 @@ $(document).ready(function()
                 <tbody>
                 @foreach($announcements as $announcement)
                     <tr>
-    <td class = "id">{{ $announcement -> id }}</td>
+    <td class = "id" hidden>{{ $announcement -> id }}</td>
     <td class = "title">{{ $announcement -> title }}</td>
     <td class = "description">{{ $announcement -> description }}</td>
     <td class = "image"><img src="{{asset($announcement->image)}}" class="img img-responsive" style="hight:120px; width:120px;"></td>
     
     <td class="d-flex justify-content-center">
 
-<a href="#" class="btn btn-info mr-1 px-1 py-0"
-    target="blank"><i class="bi bi-printer"></i></a>
+    <a href="{{url('announcement/edit/'.$announcement->id)}}" class="btn btn-primary mr-1 px-1 py-0 "><i class="bi bi-pencil-square"  data-toggle="tooltip"></i></a>
+    
+<!-- <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit1" 
+data-target="#editEmployeeModal" data-toggle="modal">
+    <i class="bi bi-pencil-square" data-toggle="tooltip" data-idUpdate = "'$announcement -> id'"></i>
+</button> -->
 
-<button type="button" class="btn btn-primary mr-1 px-1 py-0 edit1" data-bs-target="{{ '#editEmployeeModal' . $announcement->id }}" data-target="#editEmployeeModal" data-toggle="modal"
->
+<!-- <button type="button" class="btn btn-primary mr-1 px-1 py-0 edit1" 
+data-bs-target="{{ '#editEmployeeModal' . $announcement->id }}" d
+ata-target="#editEmployeeModal" data-toggle="modal">
+
     <i class="bi bi-pencil-square" data-toggle="tooltip" ></i>
-</button>
+</button> -->
 <!-- noticecontroller the logic to delete -->
 <form action="{{ route('routines_xi.destroy', $announcement->id) }}" method="post">
     @csrf
@@ -327,6 +333,8 @@ $(document).ready(function()
        <label>Title</label>
        <input type="text" name ="title" class="form-control" required>
       </div>
+
+      
       <div class="form-group">
        <label>Description</label>
        <textarea class="form-control" name ="description" required></textarea>
@@ -348,14 +356,17 @@ $(document).ready(function()
   </div>
  </div>
 
+ 
+
  <!-- edit Modal HTML  -->
  <div id="editEmployeeModal" class="modal fade">
   <div class="modal-dialog modal-dialog-scrollable">
    <div class="modal-content">
-   <form action="{{route('update.announcement', $announcement->id)}}" method="POST" enctype="multipart/form-data">
+   <form action="{{route('update.announcement')}}" method="POST" enctype="multipart/form-data">
+   <!-- <form action="{{route('update.announcement', $announcement->id)}}" method="POST" enctype="multipart/form-data"> -->
     @csrf  
     
-    <input type="text" hidden id = "id" name = "id" value = ""> 
+    <input type="text" hidden  id = "id" name = "id" value = ""> 
 
      <div class="modal-header popupheader">      
       <h4 class="modal-title">Update Announcement</h4>
@@ -366,6 +377,12 @@ $(document).ready(function()
        <label>Title</label>
        <input type="text" name ="title" id ="title" class="form-control" required>
       </div>
+
+      <div class="form-group">
+       <label>id</label>
+       <input type="text" name ="id" id ="id" class="form-control" required>
+      </div>
+
       <div class="form-group">
        <label>Description</label>
        <textarea class="form-control" name ="description" id ="description" required></textarea>

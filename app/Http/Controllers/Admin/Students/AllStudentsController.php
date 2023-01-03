@@ -46,12 +46,9 @@ class AllStudentsController extends Controller
             'st_id' => 'required',
             'name' => 'required',
             'session' => 'required',
-            'fathers_name' => 'required',
-            'mothers_name' => 'required',
             'dob' => 'required',
             'phone' => 'required',
-            'present_address' => 'required',
-            'permanent_address' => 'required'
+           
            
         ]);
         $name_slug = Str::of($request->name)->slug('-');
@@ -61,14 +58,11 @@ class AllStudentsController extends Controller
             'session' => $request->session,
             'department' => $request->department,
             'c_class' => $request->c_class,
-            'fathers_name' => $request->fathers_name,
-            'mothers_name' => $request->mothers_name,
             'dob' => $request->dob,
             'gender' => $request->gender,
             'phone' => $request->phone,
             'email' => $request->email,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
+            
            
         ];
 
@@ -138,12 +132,10 @@ class AllStudentsController extends Controller
             'st_id' => 'required',
             'name' => 'required',
             'session' => 'required',
-            'fathers_name' => 'required',
-            'mothers_name' => 'required',
+           
             'dob' => 'required',
             'phone' => 'required',
-            'present_address' => 'required',
-            'permanent_address' => 'required'
+            
         
         ]);
         $name_slug = Str::of($request->name)->slug('-');
@@ -153,14 +145,11 @@ class AllStudentsController extends Controller
             'session' => $request->session,
             'department' => $request->department,
             'c_class' => $request->c_class,
-            'fathers_name' => $request->fathers_name,
-            'mothers_name' => $request->mothers_name,
+           
             'dob' => $request->dob,
             'gender' => $request->gender,
             'phone' => $request->phone,
             'email' => $request->email,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
            
         ];
 
@@ -204,12 +193,8 @@ class AllStudentsController extends Controller
         if(File::exists(public_path('images/students/'). $student->photo)) {
             File::delete(public_path('images/students/'). $student->photo);
         }
-        if(File::exists(public_path('images/testimonials/ssc/'). $student->ssc_testimonial)) {
-            File::delete(public_path('images/testimonials/ssc/'). $student->ssc_testimonial);
-        }
-        if(File::exists(public_path('images/marksheets/'). $student->ssc_marksheet)) {
-            File::delete(public_path('images/marksheets/'). $student->ssc_marksheet);
-        }
+        
+        
         DB::table('students')->where('id',$id)->delete();
 
         $notify = ['message'=>'Student successfully removed!', 'alert-type'=>'success'];

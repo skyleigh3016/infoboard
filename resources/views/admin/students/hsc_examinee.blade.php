@@ -3,7 +3,7 @@
     HSC Examinee Students
 @endsection
 <?php $menu = 'Students';
-$submenu = 'HSC_Examinee'; ?>
+$submenu = '2nd_year'; ?>
 
 @section('content')
     <div class="container-fluid">
@@ -19,17 +19,16 @@ $submenu = 'HSC_Examinee'; ?>
             </div>
             <div class="card-body table-responsive">
 
-                <table class="table table-bordered table-striped" id="example1">
+                <table class="table table-bordered table-striped" >
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Photo</th>
                             <th>Name</th>
                             <th>Group</th>
-                            <th>Parents name</th>
                             <th>Phone</th>
                             <th>Session</th>
-                            <th>HSC</th>
+                         
                             <th>More</th>
                         </tr>
                     </thead>
@@ -48,52 +47,24 @@ $submenu = 'HSC_Examinee'; ?>
                                 </td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->department }}</td>
-                                <td>
-                                    <div class="text-muted text-sm">Father: </div> {{ $item->fathers_name }}
-                                    <div class="text-muted text-sm">Mother: </div> {{ $item->mothers_name }}
-                                </td>
+                               
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->session }}</td>
 
-                                <td class="text-center">
-
-                                    @php
-                                        $hsc_info = DB::table('hsc_info')
-                                            ->where('st_id', $item->id)
-                                            ->first();
-                                    @endphp
-
-                                    @if ($hsc_info)
-                                        @if ($hsc_info->result != null)
-                                            @if ($hsc_info->result >= 1)
-                                                <span class="badge badge-pill badge-success mb-2">Passed</span><br>
-                                            @elseif($hsc_info->result == '0')
-                                                <span class="badge badge-pill badge-danger mb-2">Failed</span><br>
-                                            @endif
-                                        @endif
-                                    @endif
-
-                                    <button class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#{{ 'addInfo' . $item->id }}"
-                                        @if ($hsc_info) disabled @endif><i class="fas fa-plus-circle"></i>
-                                        Info</button><br>
-                                </td>
+                               
 
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-                                        <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
-                                                class="bi bi-telephone"></i></a>
+                                        
 
                                         <a href="mailto:{{ $item->email }}" class="btn btn-danger px-1 py-0"
                                             target="blank"><i class="bi bi-envelope"></i></a>
                                     </div>
 
-                                    <a href="{{ route('students.transfer-class', $item->id) }}"
-                                        class="confirm btn btn-outline-primary btn-sm mt-2">
-                                        Transfer <i class="far fa-arrow-alt-circle-right ml-1"></i></a>
+                                   
                                 </td>
                             </tr>
 
@@ -153,8 +124,8 @@ $submenu = 'HSC_Examinee'; ?>
 
 
 
-            <!-- Modal for add student -->
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+           <!-- Modal for add student -->
+           <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -208,44 +179,23 @@ $submenu = 'HSC_Examinee'; ?>
                                     <div class="form-group col-md-6">
                                         <label for=" department">Department</label>
                                         <select name="department" class="form-control">
-                                            <option value="Science">Science</option>
-                                            <option value="Humanities">Humanities</option>
-                                            <option value="Business">Business</option>
+                                            <option value="BSIS">BSIS</option>
+                                            <option value="BSAIS">BSAIS</option>
+                                            <option value="BSE">BSE</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for=" fathers_name">Father's name</label>
-                                        <input class="form-control @error('fathers_name') is-invalid @enderror"
-                                            type="text" name=" fathers_name" value="{{ old(' fathers_name') }}">
-                                        @error('fathers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for=" mothers_name">Mother's name</label>
-                                        <input class="form-control @error('mothers_name') is-invalid @enderror"
-                                            type="text" name=" mothers_name" value="{{ old(' mothers_name') }}">
-                                        @error('mothers_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" c_class">Current Class</label>
                                         <select name="c_class" class="form-control">
-                                            <option value="XI">XI</option>
-                                            <option value="XII">XII</option>
-                                            <option value="HSC Examinee">HSC Examinee</option>
-                                            <option value="Old Student">Old Student</option>
+                                            <option value="1st Year">1st Year</option>
+                                            <option value="2nd Year">2nd Year</option>
+                                            <option value="3rd Year">3rd Year</option>
+                                            <option value="4th Year">4th Year</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -298,7 +248,7 @@ $submenu = 'HSC_Examinee'; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" present_address">Present address</label>
                                         <input class="form-control @error('present_address') is-invalid @enderror"
@@ -321,9 +271,9 @@ $submenu = 'HSC_Examinee'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" birth_reg_nid">NID / Birth certificate no.</label>
                                         <input class="form-control @error('birth_reg_nid') is-invalid @enderror"
@@ -344,9 +294,9 @@ $submenu = 'HSC_Examinee'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_board">SSC board</label>
                                         <select name="ssc_board" class="form-control">
@@ -372,9 +322,9 @@ $submenu = 'HSC_Examinee'; ?>
                                             <option value="Vocational">Vocational</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_school">SSC School</label>
                                         <input class="form-control @error('ssc_school') is-invalid @enderror"
@@ -395,9 +345,9 @@ $submenu = 'HSC_Examinee'; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" ssc_testimonial">SSC testimonial</label>
                                         <input class="form-control p-1" type="file" name=" ssc_testimonial">
@@ -406,7 +356,7 @@ $submenu = 'HSC_Examinee'; ?>
                                         <label for=" ssc_marksheet">SSC marksheet</label>
                                         <input class="form-control p-1" type="file" name=" ssc_marksheet">
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="modal-footer">
@@ -417,7 +367,6 @@ $submenu = 'HSC_Examinee'; ?>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
