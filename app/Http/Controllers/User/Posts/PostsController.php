@@ -102,7 +102,7 @@ class PostsController extends Controller
         $data = [
             'user_id' => Auth::user()->id,
             'post_text' => $request->post_text,
-            'update_date' => now('6.0').date(''),
+            'update_date' => now('8').date(''),
             'visibility' => $request->visibility
         ];
 

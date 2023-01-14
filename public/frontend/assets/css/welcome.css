@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(255, 255, 255);
+    background: url("../img/cmdi.jpg") top center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -12,13 +12,20 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
+    
 }
 
 .mySlides {
-    display: block;
-    width: 100%;
-    height: 800px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    transition: left 2s;
+}
+.myslides::after{
+    opacity: 0.5;
 }
 
 .div2 {
@@ -36,7 +43,8 @@ body {
     background-color: inherit;
     text-align: center;
     cursor: pointer;
-    white-space: nowrap
+    white-space: nowrap;
+    border-radius: 20px;
 }
 
 .w3-button {
@@ -60,7 +68,7 @@ body {
 
 .w3-button:first-child {
     background-color: #ccc;
-    color: #000;
+    color: rgb(177, 190, 244);
 }
 
 .w3-button {
@@ -71,14 +79,15 @@ body {
 }
 
 .w3-button:hover {
-    color: #000!important;
+    color: rgb(37, 55, 147)!important;
     background-color: #ccc!important
 }
 
 .w3-black,
 .w3-hover-black:hover {
+    border: 1px solid #eb7821;
     color: #fff!important;
-    background-color: #000!important
+    background-color: #001247 !important
 }
 
 .w3-display-left {
@@ -108,76 +117,6 @@ body {
 }
 
 
-/* Video div*/
-
-.home-video {
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    gap: 15px;
-    align-items: flex-start;
-    margin: 20px 40px 20px 40px;
-}
-
-.home-video .vid-div {
-    background: orange;
-    border-radius: 20px;
-}
-
-.home-video .vid-div video {
-    width: 100%;
-    max-height: 600px;
-    border-radius: 20px;
-}
-
-.home-video .qr-div {
-    background: #fff;
-    width: 100%;
-    height: 100%;
-    outline: 5px groove rgb(255, 123, 0);
-    border-radius: 25px;
-}
-
-.home-video .qr-div .div1-top {
-    text-align: center;
-    padding: 25px;
-    border-bottom: 5px ridge rgb(255, 123, 0);
-}
-
-.home-video .qr-div .div1-top h2 {
-    text-transform: uppercase;
-}
-
-.home-video .qr-div .div2-bottom {
-    text-align: center;
-}
-
-.home-video .qr-div .div2-bottom p {
-    margin: 40px 0;
-}
-
-.home-video .qr-div .div2-bottom p a:link {
-    color: green;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-.home-video .qr-div .div2-bottom p a:visited {
-    color: green;
-    text-decoration: none;
-}
-
-.home-video .qr-div .div2-bottom p a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.home-video .qr-div .div2-bottom p a:active {
-    color: yellow;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
 .qr-image {
     height: 120px;
     width: 120px;
@@ -204,7 +143,8 @@ body {
 /* Top stories*/
 
 .top-stories-div {
-    background-color: #94A8D2;
+    position: relative;
+    background-color: #c6d8ff;
     width: 100%;
     margin-top: 20px;
     padding-bottom: 50px;
@@ -212,11 +152,10 @@ body {
 }
 
 .top-stories-div .heading {
-    color: rgb(24, 24, 24);
-    margin: 20px 0 0 20px;
-    font-size: 40px;
-    font-family: cursive;
-    display: inline;
+    font-size: 20px;
+    color: #012970;
+    font-weight: 700;
+    margin: 20px 0 10px 0;
 }
 
 .phar-imag-div {
@@ -267,7 +206,7 @@ body {
 }
 
 
-/*image carousel*/
+image carousel
 
 .home-slider {
     background-color: rgba(255, 123, 0, 0.822);
@@ -278,16 +217,23 @@ body {
     margin-bottom: 20px;
 }
 
+
+.home-slider .heading {
+    color: rgb(24, 24, 24);
+    margin: 20px 0 0 20px;
+    font-size: 40px;
+    font-family: cursive;
+    display: inline;
+}
 .hero {
     width: 100%;
-    height: 110vh;
-    background: none;
+    height: 100vh;
+    background: rgb(255, 213, 134);
     overflow: hidden;
 }
 
 .hero .carousel {
     width: 300px;
-    margin-top: 140px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 10px;
@@ -301,3 +247,95 @@ body {
 .carousel ul li img:hover {
     transform: scale(1.02);
 }
+.carousel-control-prev{
+    color: #001247 ;
+}
+
+.carousel-control-prev-icon {
+    color: #001247!important;
+    position: absolute;
+    left: 10px;
+    padding: 8px 16px;
+}
+
+.carousel-control-next-icon {
+    color: #001247!important;
+    position: absolute;
+    right: 10px;
+    padding: 8px 16px;
+}
+
+
+
+.myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .myImg:hover {opacity: 0.7;}
+ 
+  
+  /* Add Animation */
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 75px;
+    right: 45px;
+    color: #f1f1f1;
+    font-size: 65px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+      
+    }
+  }
+
+  /*foot*/
+  
+  .bottom-div .bottom-line{
+    position: sticky;
+    display: block;
+    color: #c6d8ff;
+    background-color: var(--blue);
+    background-image: linear-gradient(to right, var(--blue), var(--blue), #001247);
+    height: 100px;
+    width: 100%;
+    border-top: 10px solid var(--orange);
+    outline: 0.01px solid #001247;
+    border-image-slice: 1;
+}
+.kakaiba{
+    text-align: center;
+}
+
+  

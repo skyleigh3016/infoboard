@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('video')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

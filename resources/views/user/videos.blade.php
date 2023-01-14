@@ -71,7 +71,7 @@ $rightbarImage = 'st_stressed.png';
                                                         method="post">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-link text-dark p-1">
+                                                        <button type="submit" class="btn btn-link text-dark px-0 ms-3">
                                                             <i class="fas fa-thumbs-up text-primary"></i>
                                                             {{ '(' . $like->count() . ')' }}</button>
                                                     </form>
@@ -80,24 +80,23 @@ $rightbarImage = 'st_stressed.png';
                                                 <form action="{{ route('like.store') }}" method="post">
                                                     @csrf
                                                     <input type="hidden" value="{{ $item->id }}" name="post_id">
-                                                    <button type="submit" class="btn btn-link text-dark p-1"><i
-                                                            class="far fa-thumbs-up"></i>
-                                                        {{ '(' . $like->count() . ')' }}
+                                                    <button type="submit" class="btn btn-link text-dark p-1 ms-3"><i class="far fa-thumbs-up"></i>{{ '(' . $like->count() . ')' }}
                                                     </button>
                                                 </form>
                                             @endif
                                         </div>
 
                                         {{-- Comment --}}
+                                        <form method="post">
                                         <a class="btn btn-link text-dark p-1 ms-3" data-bs-toggle="modal"
                                             data-bs-target="{{ '#postCmnt' . $item->id }}"><i
                                                 class="fa-regular fa-comment"></i>
                                             {{ '(' . $comments->count() . ')' }}</a>
-
+                                        </form>
                                         {{-- View --}}
-                                        <button class="btn btn-primary bg-gradient btn-sm py-1 ms-3" data-bs-toggle="modal"
+                                        <button class="btn btn-primary bg-gradient btn-sm py-1" data-bs-toggle="modal"
                                             data-bs-target="{{ '#postImg' . $item->id }}"><i class="fas fa-eye"></i>
-                                            View video</button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

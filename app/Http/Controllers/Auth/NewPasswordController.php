@@ -68,7 +68,7 @@ class NewPasswordController extends Controller
     public function password_update(Request $request) {
         $request->validate([
             'current_password'=>'required',
-            'password'=>'required|min:8|max:13|string|confirmed',
+            'password'=>'required|min:8|max:20|string|confirmed',
             'password_confirmation'=>'required',
         ]);
 

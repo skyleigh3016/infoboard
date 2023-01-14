@@ -137,7 +137,7 @@ $submenu = ''; ?>
                     <!-- /.card-header -->
 
                     <div class="card-body table-responsive">
-                        <table class="table table-striped" id="example1">
+                        <table class="table table-striped" >
                             <thead>
                                 <tr>
                                     <th>SL</th>

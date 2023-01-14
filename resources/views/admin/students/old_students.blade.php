@@ -123,6 +123,11 @@ $submenu = '1st_year'; ?>
                                             <option value="BSIS">BSIS</option>
                                             <option value="BSAIS">BSAIS</option>
                                             <option value="BSE">BSE</option>
+                                            <option value="BSE">BSA</option>
+                                            <option value="BSE">BSTM</option>
+                                            <option value="BSE">ICT</option>
+                                            <option value="BSE">ABM</option>
+                                            <option value="BSE">HE</option>
                                         </select>
                                     </div>
                                 </div>

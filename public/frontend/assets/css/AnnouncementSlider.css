@@ -8,6 +8,8 @@ body{
     background-color: #fff;
 }
 .container{
+    margin-top: 4%;
+    margin-bottom: 4%;
     max-width: 100%;
     padding: 40px 0 0;
 }
@@ -17,7 +19,7 @@ body{
     padding: 20px;
 }
 .slider-img-body{
-    height: 290px;
+    height: auto;
 }
 .slider-item{
     opacity: 0.3;
@@ -27,7 +29,7 @@ body{
     box-shadow: 0 15px 45px -20px rgba(206, 191, 191, 0.493);
 }
 .slider-img{
-    max-width: 100%;
+    width: cover;
     height: 100%;
     display: block;
     border-radius: 5px 5px 0px 0px;
@@ -40,15 +42,15 @@ body{
 .owl-item.active.center .slider-item{
     opacity: 1;
     transform: scale(1);
-    background: #f79d00;  /* fallback for old browsers */
+    ckground: #f79d00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #64f38c, #f79d00);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #64f38c, #f79d00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #a9acaa33, #f79d00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ba
 }
 .slider-title{
     padding: 25px;
 }
-.slider-description{
-    font-size: 14px;
+.slider-description {
+    font-size: 18px;
     padding-bottom: 20px;
 }
 .owl-nav .owl-next{

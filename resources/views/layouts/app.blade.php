@@ -27,8 +27,8 @@
         </div> --}}
     </div>
 
-    <a href="{{ route('messenger') }}" class="fixedbutton btn btn-primary btn-rounded square px-0"
-        data-mdb-toggle="tooltip" data-mdb-placement="left" title="Messenger"><i
+    <a href="{{ route('chatify') }}" class="fixedbutton btn btn-primary btn-rounded square px-0"
+        data-mdb-toggle="tooltip" data-mdb-placement="left" title="Chatify"><i
             class="bi bi-chat-square-fill fa-lg"></i></a>
 
 

@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="{{ url('/messenger' . '/' . $people->id) }}">
+                            <a href="{{ url('/chatify' . '/' . $people->id) }}">
                                 <span
                                     class="bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                                     style="height: 35px; width:35px">

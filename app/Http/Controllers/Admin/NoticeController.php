@@ -17,11 +17,9 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $announcements = DB::table('announcements')
-                ->orderBy('id', 'DESC')
-                ->get();
+        $announcements=Announcement::orderBy('id','desc')->paginate(5);
+        return view('admin.notices.index',compact('announcements'));
 
-        return view('admin.notices.index', compact('announcements'));
     }
 
     /**
@@ -31,7 +29,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.notices.create');
     }
 
     /**
@@ -42,27 +40,36 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'subject' => 'required',
-            'author' => 'required',
-            'author_designation' => 'required',
-            'description' => 'required'
+        
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+
         ]);
 
-        $data = [
-            'subject' => $request->subject,
-            'author' => $request->author,
-            'author_designation' => $request->author_designation,
-            'description' => $request->description,
-            'visibility' => $request->visibility,
-            'description' => $request->description,
-            'post_date' => now('6.0').date('')
-        ];
+        $image = $request->file('image');
 
-        DB::table('notices')->insert($data);
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($image->getClientOriginalExtension());
+        $img_name = $name_gen. '.' .$img_ext;
+        $up_location = 'image/announcement/';
+        $last_img = $up_location.$img_name;
+        $image->move($up_location,$img_name);
 
-        $notify = ['message'=>'Notice successfully added!', 'alert-type'=>'success'];
-        return redirect()->back()->with($notify);
+        Announcement::insert([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $last_img,
+            'created_at' => Carbon::now()
+            
+                        ]);
+   
+        $notify = ['message'=>'Announcement successfully added!', 'alert-type'=>'success'];
+        
+        return redirect()->route('home.announcement')->with($notify);
+        
+       
     }
 
     /**
@@ -71,14 +78,6 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $notice = DB::table('notices')
-                ->where('id', $id)
-                ->first();
-
-        return view('admin.notices.print', compact('notice'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,8 +97,53 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+
+        $image = $request->file('image');
+
+        if($image){
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+
+            $update = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' =>  $profileImage,
+                'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('notices')->where('id',$request->id)->update($update);
+           
+
+        
+
+        }else{
+
+            $update = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('notices')->where('id',$request->id)->update($update);
+
+      
+        
+        }
+        
+        $notify = ['message'=>'Announcement successfully updated!', 'alert-type'=>'success'];
+        
+        return redirect()->route('home.announcement')->with($notify);
+    
         $validated = $request->validate([
             'subject' => 'required',
             'author' => 'required',
@@ -119,8 +163,9 @@ class NoticeController extends Controller
 
         DB::table('notices')->where('id', $id)->update($data);
 
-        $notify = ['message'=>'Notice successfully updated!', 'alert-type'=>'success'];
+        $notify = ['message'=>'Announcement successfully updated!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
+
     }
 
 
@@ -166,8 +211,8 @@ class NoticeController extends Controller
       
         
         }
-        $notify = ['message'=>'Announcements successfully Updated!', 'alert-type'=>'success'];
-        return redirect()->back()->with($notify);
+        $notify = ['message'=>'Announcements successfully updated!', 'alert-type'=>'success'];
+        return redirect()->route('home.announcement')->with($notify);
     }
 
     /**
@@ -179,10 +224,17 @@ class NoticeController extends Controller
   
     public function destroy($id)
     {
+
+        DB::table('announcements')->where('id', $id)->delete();
+
+        $notify = ['message'=>'Announcement successfully deleted!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
+
+    /*
         DB::table('bookings')->where('id', $id)->delete();
 
-        $notify = ['message'=>'Event deleted successfully!', 'alert-type'=>'success'];
-        return redirect()->back()->with($notify);
+        $notify = ['message'=>'Event successfully deleted!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);*/
     }
 
     public function ilagay(Request $request){
@@ -213,7 +265,31 @@ class NoticeController extends Controller
    $notify = ['message'=>'Event successfully Inserted!', 'alert-type'=>'success'];
                         return redirect()->back()->with($notify);
                      }
-    
+    public function trash()
+    {
+        $announcements=Announcement::onlyTrashed()->get();
+
+        return view('admin.notices.Trash', compact('announcements'));
+    }
+
+    public function archive($id)
+        {  
+
+        $announcements=Announcement::where('id', $id)->delete();
+
+            $notify = ['message'=>'Announcement Archived!', 'alert-type'=>'success'];
+            return redirect()->back()->with($notify);        
+                    
+        }
+    public function restoreTrash($id)
+    {
+        $announcements=Announcement::where('id', $id)->restore();
+
+        $notify = ['message'=>'Announcement Restored!', 'alert-type'=>'success'];
+            
+        return redirect()->back()->with($notify);
+    }
+
    
 
    

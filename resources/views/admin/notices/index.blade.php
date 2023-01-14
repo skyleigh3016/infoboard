@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Notices
+    Announcement
 @endsection
 <?php $menu = 'Announcement';
 $submenu = ''; ?>
@@ -256,30 +256,34 @@ $(document).ready(function()
       <h2 style = >Manage <b>Announcements</b></h2>
      </div>
      <div class="col-sm-6">
-        
-      <a href="#addEmployeeModal" class="btn  btn-primary btn-sm" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Announcement</span></a>
-      </div>
+     
+        <a href="{{route('announcement.trash')}}" class="btn btn-primary btn-sm">
+            <span class="bi bi-archive-fill"></span><span>Archive</span></a>
+        <a href="{{route('notices.create') }}" class="btn  btn-primary btn-sm" ><i class="material-icons">&#xE147;</i> <span>Add New Announcement</span></a>
+       
+    </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" width="5%" hidden>id</th>
-                        <th scope="col" width="20%">Title</th>
+                        <th scope="col" width="5%">id</th>
+                        <th scope="col" width="10%">Title</th>
                         <th scope="col" width="50%">Description</th>
-                        <th scope="col" width="15%">Images</th>
-                        <th scope="col" width="10%">Action</th>
+                        <th scope="col" width="10%">Images</th>
+                        <th scope="col" width="25%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                @if(count($announcements) > 0)
                 @foreach($announcements as $announcement)
                     <tr>
-    <td class = "id" hidden>{{ $announcement -> id }}</td>
+    <td class = "id" >{{ $announcement -> id }}</td>
     <td class = "title">{{ $announcement -> title }}</td>
-    <td class = "description">{{ $announcement -> description }}</td>
-    <td class = "image"><img src="{{asset($announcement->image)}}" class="img img-responsive" style="hight:120px; width:120px;"></td>
+    <td class = "description">{!! $announcement -> description !!}</td>
+    <td class = "image"><img src="{{asset($announcement->image)}}" class="img img-responsive" style="height:120px; width:120px;"></td>
     
-    <td class="d-flex justify-content-center">
+    <td class="d-flex justify-content">
 
     <a href="{{url('announcement/edit/'.$announcement->id)}}" class="btn btn-primary mr-1 px-1 py-0 "><i class="bi bi-pencil-square"  data-toggle="tooltip"></i></a>
     
@@ -295,12 +299,10 @@ ata-target="#editEmployeeModal" data-toggle="modal">
     <i class="bi bi-pencil-square" data-toggle="tooltip" ></i>
 </button> -->
 <!-- noticecontroller the logic to delete -->
-<form action="{{ route('routines_xi.destroy', $announcement->id) }}" method="post">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit" class="btn btn-danger delete px-1 py-0"><i
-            class="bi bi-trash"></i></button>
-</form>
+    <form action="{{route('announcement.archive',['id'=>$announcement->id] ) }}">
+        <button type="submit" class="btn btn-danger px-1 py-0" ><span class="material-icons">archive</span></button>
+
+    </form>
 </td>
     
     
@@ -312,99 +314,18 @@ ata-target="#editEmployeeModal" data-toggle="modal">
        
                     </tr> 
                     @endforeach
+            @else
+                <tr>
+                    <td colspan="5" class="text-center">No Data Found</td>
+                </tr>  
+            @endif
                 </tbody>
             </table>
-  
+            {{$announcements->links()}}
+</div>
         </div>
     </div>
- <!-- Add Modal HTML -->
- <div id="addEmployeeModal" class="modal fade">
-  <div class="modal-dialog modal-dialog-scrollable">
-   <div class="modal-content">
-    <form action="{{route('store.announcement')}}" method="POST" enctype="multipart/form-data">
-    @csrf 
-     <input type="text" hidden id = "id" name = "id" value = "">  
-     <div class="modal-header popupheader">      
-      <h4 class="modal-title">Add Announcement</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-     </div>
-     <div class="modal-body">     
-      <div class="form-group">
-       <label>Title</label>
-       <input type="text" name ="title" class="form-control" required>
-      </div>
-
-      
-      <div class="form-group">
-       <label>Description</label>
-       <textarea class="form-control" name ="description" required></textarea>
-      </div>
-         
-      
-      <div class="form-group">
-       <label>Image</label>
-       <input type="file" name ="image" class="form-control" required>
-      </div>  
-     </div>
-     
-     <div class="modal-footer">
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-      <input type="submit" class="btn btn-success" value="Add">
-     </div>
-    </form>
-   </div>
-  </div>
- </div>
-
  
-
- <!-- edit Modal HTML  -->
- <div id="editEmployeeModal" class="modal fade">
-  <div class="modal-dialog modal-dialog-scrollable">
-   <div class="modal-content">
-   <form action="{{route('update.announcement')}}" method="POST" enctype="multipart/form-data">
-   <!-- <form action="{{route('update.announcement', $announcement->id)}}" method="POST" enctype="multipart/form-data"> -->
-    @csrf  
-    
-    <input type="text" hidden  id = "id" name = "id" value = ""> 
-
-     <div class="modal-header popupheader">      
-      <h4 class="modal-title">Update Announcement</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-     </div>
-     <div class="modal-body">     
-      <div class="form-group">
-       <label>Title</label>
-       <input type="text" name ="title" id ="title" class="form-control" required>
-      </div>
-
-      <div class="form-group">
-       <label>id</label>
-       <input type="text" name ="id" id ="id" class="form-control" required>
-      </div>
-
-      <div class="form-group">
-       <label>Description</label>
-       <textarea class="form-control" name ="description" id ="description" required></textarea>
-      </div>
-     
-      
-      <div class="form-group">
-       <label>Image</label>
-       <input type="file" name ="image" id ="image" class="form-control" >
-      </div>  
-     </div>
-
-     
-     
-     <div class="modal-footer">
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-      <input type="submit" class="btn btn-success" value="Update">
-     </div>
-    </form>
-   </div>
-  </div>
- </div>
  
 
 @endsection

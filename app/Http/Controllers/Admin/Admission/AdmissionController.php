@@ -58,7 +58,7 @@ class AdmissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.admission.create');
     }
 
     /**
@@ -243,13 +243,15 @@ class AdmissionController extends Controller
         $notify = ['message'=>'Learning Video deleted successfully!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
     }
-    public function ilagay(Request $request)
+    public function insert(Request $request)
     {
        $request->validate([
             'title'=>'required',
             'description'=>'required',
             'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
        ]);
+
+       
        
     
        $video = $request->file('video');
@@ -258,7 +260,7 @@ class AdmissionController extends Controller
        $img_ext = strtolower($video->getClientOriginalExtension());
        $img_name = $name_gen. '.' .$img_ext;
        $up_location = 'learning';
-       $last_vid = $up_location.$img_name;
+       $last_vid = 'learning/'.$img_name;
        $video->move($up_location,$img_name);
 
        Learning::insert([
@@ -273,46 +275,50 @@ class AdmissionController extends Controller
       
     }
 
-    public function UpdateLearning(Request $request , $id) 
+    public function UpdateLearning(Request $request) 
     {
+        
+        $validate = $request->validate([
+            'video' => 'mimes:mp4,ogx,oga,ogv,ogg,webm'
+          ]);
+  
+          
+  
+          $video = $request->file('video');
+          if($video){
+          $file=$request->file('video');
+          $file->move('learning',$file->getClientOriginalName());
+          $file_name=$file->getClientOriginalName();
+          $last_vid =  'learning/'.$file_name;
 
-        $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
-
-        ]);
+            $update = [
+                'title' => $request->title,
+        'description' => $request->description,
+        'video' =>  $last_vid,
+        'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('learnings')->where('id',$request->id)->update($update);
+           
 
         
-        $file=$request->file('video');
-
-        if($file){
-            $file->move('learning',$file->getClientOriginalName());
-       $file_name=$file->getClientOriginalName();
-       $last_vid =  'learning/'.$file_name;
-
-       Learning::find($id)->update([
-        'title' => $request->title,
-        'description' => $request->description,
-        'video' => $last_vid,
-        'created_at' => Carbon::now()
-         ]);
-
 
         }else{
 
-        Learning::find($id)->update([
-        'title' => $request->title,
-        'description' => $request->description,
-        'updated_at' => Carbon::now()
-        
-                    ]);
-        
-        }
+            $update = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('learnings')->where('id',$request->id)->update($update);
 
       
-        $notify = ['message'=>'Learning successfully Updated!', 'alert-type'=>'success'];
-        return redirect()->back()->with($notify);
+        
+        }
+        $notify = ['message'=>'Learning successfully updated!', 'alert-type'=>'success'];
+        return redirect()->route('home.learning')->with($notify);
     }
+
 
 }

@@ -48,16 +48,8 @@ class TeachersController extends Controller
             'position' => 'required',
             'department' => 'required',
             'subject' => 'required',
-            'fathers_name' => 'required',
-            'mothers_name' => 'required',
             'gender' => 'required',
-            'dob' => 'required',
             'phone' => 'required',
-            'present_address' => 'required',
-            'permanent_address' => 'required',
-            'nid' => 'required',
-            'edu_qualification' => 'required',
-            'salary' => 'required',
         ]);
         $name_slug = Str::of($request->name)->slug('-');
         $data = [
@@ -66,17 +58,9 @@ class TeachersController extends Controller
             'position' => $request->position,
             'department' => $request->department,
             'subject' => $request->subject,
-            'fathers_name' => $request->fathers_name,
-            'mothers_name' => $request->mothers_name,
             'gender' => $request->gender,
-            'dob' => $request->dob,
-            'nid' => $request->nid,
             'phone' => $request->phone,
             'email' => $request->email,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
-            'edu_qualification' => $request->edu_qualification,
-            'salary' => $request->salary
         ];
 
         if ($request->file('photo')) {
@@ -90,24 +74,9 @@ class TeachersController extends Controller
             $data['photo'] = $input['photo'];
         }
 
-        if ($request->file('edu_certificate')) {
-            $image = $request->file('edu_certificate');
-            $input['edu_certificate'] = $name_slug . '-' . time() .'_certificate.' . $image->getClientOriginalExtension();
+       
 
-            $destinationPath = public_path('images/teachers/certificate');
-            $imgFile = Image::make($image->getRealPath());
-            $imgFile->resize(1650, 1275)->save($destinationPath . '/' . $input['edu_certificate']);
-
-            $data['edu_certificate'] = $input['edu_certificate'];
-        }
-
-        if ($request->file('cv')) {
-            $file = $request->file('cv');
-            $input['cv'] = $name_slug . '-' . time() .'_cv.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('images/teachers/cv');
-            $file->move($destinationPath, $input['cv']);
-            $data['cv'] = $input['cv'];
-        }
+       
 
         DB::table('teachers')->insert($data);
 
@@ -155,17 +124,9 @@ class TeachersController extends Controller
             'position' => $request->position,
             'department' => $request->department,
             'subject' => $request->subject,
-            'fathers_name' => $request->fathers_name,
-            'mothers_name' => $request->mothers_name,
             'gender' => $request->gender,
-            'dob' => $request->dob,
-            'nid' => $request->nid,
             'phone' => $request->phone,
             'email' => $request->email,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
-            'edu_qualification' => $request->edu_qualification,
-            'salary' => $request->salary
         ];
 
         if ($request->photo) {
@@ -184,36 +145,7 @@ class TeachersController extends Controller
             $data['photo'] = $request->old_photo;
         }
 
-        if ($request->edu_certificate) {
-
-            if(File::exists(public_path('images/teachers/certificate/'). $request->old_edu_certificate)) {
-                File::delete(public_path('images/teachers/certificate/'). $request->old_edu_certificate);
-            }
-            $image = $request->file('edu_certificate');
-            $input['edu_certificate'] = $name_slug . '-' . time() .'_certificate.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('images/teachers/certificate');
-            $imgFile = Image::make($image->getRealPath());
-            $imgFile->resize(1650, 1275)->save($destinationPath . '/' . $input['edu_certificate']);
-            $data['edu_certificate'] = $input['edu_certificate'];
-        }
-        else {
-            $data['edu_certificate'] = $request->old_edu_certificate;
-        }
-
-        if ($request->cv) {
-
-            if(File::exists(public_path('images/teachers/cv/'). $request->old_cv)) {
-                File::delete(public_path('images/teachers/cv/'). $request->old_cv);
-            }
-            $file = $request->file('cv');
-            $input['cv'] = $name_slug . '-' . time() .'_cv.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('images/teachers/cv');
-            $file->move($destinationPath, $input['cv']);
-            $data['cv'] = $input['cv'];
-        }
-        else {
-            $data['cv'] = $request->old_cv;
-        }
+        
 
         DB::table('teachers')->where('id', $id)->update($data);
 
@@ -234,12 +166,7 @@ class TeachersController extends Controller
         if(File::exists(public_path('images/teachers/'). $teacher->photo)) {
             File::delete(public_path('images/teachers/'). $teacher->photo);
         }
-        if(File::exists(public_path('images/teachers/certificate/'). $teacher->edu_certificate)) {
-            File::delete(public_path('images/teachers/certificate/'). $teacher->edu_certificate);
-        }
-        if(File::exists(public_path('images/teachers/cv/'). $teacher->cv)) {
-            File::delete(public_path('images/teachers/cv/'). $teacher->cv);
-        }
+     
 
         DB::table('teachers')->where('id', $id)->delete();
 

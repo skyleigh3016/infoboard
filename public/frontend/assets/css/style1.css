@@ -36,10 +36,9 @@
         z-index: 1;
         top: 0;
         border-bottom: 10px solid var(--orange);
-        ;
         outline: 0.01px solid #001247;
         border-image-slice: 1;
-        line-height: 90px;
+        line-height: 75px;
         z-index: 5;
     }
     
@@ -47,13 +46,13 @@
         position: relative;
         display: inline;
         margin-left: 50px;
-        top: 5px;
+        top: 7px;
         bottom: 5px;
     }
     
     .cmdilogo-size {
-        height: 65px;
-        width: 65px;
+        height: 50px;
+        width: 50px;
         background-color: #000000;
         border-radius: 50%;
     }
@@ -71,7 +70,7 @@
         position: static;
         display: inline;
         color: var(--white);
-        font-size: 30px;
+        font-size: 25px;
         font-weight: normal;
     }
     
@@ -164,7 +163,7 @@
             width: 100%;
             height: 100vh;
             background: #002f95e8;
-            top: 80px;
+            top: 100px;
             left: -100%;
             text-align: center;
             transition: all .5s;
@@ -222,6 +221,7 @@
         z-index: 4;
         padding: 20px 0;
         border-bottom: 15px solid var( --orange);
+        
     }
     
     .footer a {
@@ -245,8 +245,9 @@
         margin-top: 10px;
         color: black;
     }
-    .carousel-container{
-        display:inline-block ;
+    
+    .carousel-container {
+        display: inline-block;
         max-width: 100%;
         padding: 50px;
-        }
+    }

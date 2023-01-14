@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Full Calendar js</title>
+    <title>Event Calendar</title>
+        <link rel="icon" href="{{ asset('images/logos/cmdilogo.jpg') }}" type="image/x-icon">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     
@@ -17,10 +18,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-   <!-- norman CSS File home -->
-   <link href="{{ asset('frontend/assets/css/style1.css')}}" rel="stylesheet">
+        
+<!-- norman CSS File home -->
+<link href="{{ asset('frontend/assets/css/style1.css')}}" rel="stylesheet">
   <!--norman welcome-css links-->
 <link href="{{ asset('frontend/assets/css/welcome.css')}}" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{{ asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet">
+      
+
+      <script src="https://kit.fontawesome.com/3a4d1d45d1.js" crossorigin="anonymous"></script>
+      <!-- norman CSS File home -->
+<link href="{{ asset('frontend/assets/css/style1.css')}}" rel="stylesheet">
+<!--norman welcome-css links-->
+<link href="{{ asset('frontend/assets/css/welcome.css')}}" rel="stylesheet">
+
+<!--norman Bottom-Slider-css links-->
+<link href="{{ asset('frontend/assets/css/jquery.flipster.min.css')}}" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/3a4d1d45d1.js" crossorigin="anonymous"></script>
 <style>
 
   
@@ -52,49 +82,6 @@ p {
 
 
 
-  <!-- Modal -->
-  <!-- <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Booking title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="text" class="form-control" id="title">
-          <span id="titleError" class="text-danger"></span>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="modal fade" id="bookingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">IS WEEK</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit illo cupiditate eveniet similique quam. Pariatur est, harum sint consectetur facilis ullam quaerat nobis aspernatur molestias? Hic, amet facere? Cum, eos?
-      
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur vel consequuntur quasi tempore facere blanditiis nulla assumenda, ratione quos mollitia distinctio perferendis repellat placeat pariatur doloribus dolores facilis error hic.</div>
-    </p>   
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit illo cupiditate eveniet similique quam. Pariatur est, harum sint consectetur facilis ullam quaerat nobis aspernatur molestias? Hic, amet facere? Cum, eos?
-      
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur vel consequuntur quasi tempore facere blanditiis nulla assumenda, ratione quos mollitia distinctio perferendis repellat placeat pariatur doloribus dolores facilis error hic.</div>
-      </p>  
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- Modal -->
 <div class="modal fade" id="bookingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -137,7 +124,33 @@ p {
 
                 </div>
             </div>
-            @include('layouts.body.footer')
+
+<!--welcome css-->
+<footer style = "" id="bottom-id" class="bottom-div">
+<div class="bottom-line">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright" >
+          
+          &copy; Copyright <strong><span>Card-MRI Development Institute, Inc.</span></strong> All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/company-free-html-bootstrap-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">Laravel framework</a>
+        </div>
+      </div>
+      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div> -->
+    </div>
+  </footer><!-- End Footer -->
     <script>
 
 $(document).ready(function() {
@@ -155,7 +168,7 @@ $(document).ready(function() {
   },
   eventClick: function(event){
     
-    $('#bookingModal').modal('toggle');
+    $('#').modal('toggle');
 
   },
 

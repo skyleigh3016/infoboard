@@ -37,7 +37,7 @@ $cmnts_cnt = DB::table('post_comments')
                                 class="text-info">{{ $user->email }}</a></p>
                     </div>
                     @if ($user->id != Auth::user()->id)
-                        <a href="{{ url('/messenger' . '/' . $user->id) }}"
+                        <a href="{{ url('/chatify' . '/' . $user->id) }}"
                             class="btn btn-light position-absolute bottom-0 end-0 me-2 mb-2"><i
                                 class="bi bi-chat-right-text me-1"></i>
                             Message</a>
@@ -93,8 +93,11 @@ $cmnts_cnt = DB::table('post_comments')
                             <span class="fw-semibold">{{ date('d F, Y', strtotime($user->created_at)) }}</span>
                         </li>
                     </ul>
+
+                    
                 </div>
             </div>
+            
 
             @if (Auth::user()->id == $user->id)
                 <!-- <div class="card mt-4">
@@ -755,10 +758,11 @@ $cmnts_cnt = DB::table('post_comments')
 
                         {{-- Comment --}}
                         <div class="vr"></div>
+                        <form method="post">
                         <a class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
                             data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="fa-regular fa-comment"></i>
                             {{ '(' . $comments->count() . ')' }}</a>
-
+                            </form>
                         <!-- Modal for comment view -->
                         <div class="modal fade" id="{{ 'postCmnt' . $item->id }}" tabindex="-1"
                             aria-labelledby="{{ 'postCmnt' . $item->id . 'Label' }}" aria-hidden="true"
@@ -852,11 +856,11 @@ $cmnts_cnt = DB::table('post_comments')
                             </div>
                         </div>
 
-
+<!-- 
                         {{-- Share --}}
                         <div class="vr"></div>
                         <a href="" class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
-                            data-bs-target="{{ '#postLink' . $item->id }}"><i class="far fa-share-square"></i></a>
+                            data-bs-target="{{ '#postLink' . $item->id }}"><i class="far fa-share-square"></i></a> -->
 
                         <!-- Modal for copy link -->
                         <div class="modal fade" id="{{ 'postLink' . $item->id }}" tabindex="-1"

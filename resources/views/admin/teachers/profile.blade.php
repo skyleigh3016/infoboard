@@ -40,9 +40,7 @@ $submenu = $teacher->department; ?>
                             </li>
                         </ul>
 
-                        <a href="{{ route('admin.teachers.idcard.generate', $teacher->id) }}"
-                            class="btn btn-primary btn-block" target="blank"><i class="bi bi-person-badge"></i>
-                            Generate ID Card</a>
+                       
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -65,74 +63,22 @@ $submenu = $teacher->department; ?>
                             <div class="active tab-pane" id="information">
                                 <!-- Post -->
                                 <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item border-top-0">
-                                        <b>Father's name</b> <a class="float-right">{{ $teacher->fathers_name }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Mother's name</b> <a class="float-right">{{ $teacher->mothers_name }}</a>
-                                    </li>
+                                   
                                     <li class="list-group-item">
                                         <b>Gender</b> <a class="float-right">{{ $teacher->gender }}</a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Date of birth</b> <a
-                                            class="float-right">{{ date('d F, Y', strtotime($teacher->dob)) }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Present address</b> <a class="float-right">{{ $teacher->present_address }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Permanent address</b> <a
-                                            class="float-right">{{ $teacher->permanent_address }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>NID</b> <a class="float-right">{{ $teacher->nid }}</a>
-                                    </li>
+                                    
+                                  
                                     <li class="list-group-item">
                                         <b>Phone</b> <a class="float-right">{{ $teacher->phone }}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Email</b> <a class="float-right">{{ $teacher->email }}</a>
                                     </li>
-                                    <li class="list-group-item">
-                                        <b>Salary</b> <a class="float-right">{{ $teacher->salary }}</a>
-                                    </li>
+                                  
                                 </ul>
 
-                                <div class="card">
-                                    <div class="card-header attachment-block p-3">
-                                        <b>Qualifications</b>
-                                    </div>
-                                    <div class="card-body table-responsive p-0">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Educational Qualification</th>
-                                                    <th>Certificate</th>
-                                                    <th>CV</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{ $teacher->edu_qualification }}</td>
-                                                    <td>
-                                                        <a href="{{ asset('images/teachers/certificate') . '/' . $teacher->edu_certificate }}"
-                                                            class="" target="blank">
-                                                            <img class="img-fluid"
-                                                                src="{{ asset('images/teachers/certificate' . '/' . $teacher->edu_certificate) }}"
-                                                                alt="certificate" style="width: 100px"></a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ asset('images/teachers/cv') . '/' . $teacher->cv }}"
-                                                            class="" target="blank">
-                                                            <i class="bi bi-filetype-pdf text-danger"
-                                                                style="font-size: 50px; font-weight:bolder"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="edit">
@@ -175,36 +121,29 @@ $submenu = $teacher->department; ?>
                                         <div class="form-group col-md-6">
                                             <label for="department">Department</label>
                                             <select name="department" class="form-control" required>
-                                                <option value="Science" @if ($teacher->department == 'Science') selected @endif>
-                                                    Science</option>
+                                                <option value="Science" @if ($teacher->department == 'Faculty') selected @endif>
+                                                Faculty</option>
                                                 <option value="Humanities"
-                                                    @if ($teacher->department == 'Humanities') selected @endif>Humanities</option>
+                                                    @if ($teacher->department == 'OSAS') selected @endif>OSAS</option>
                                                 <option value="Business Studies"
-                                                    @if ($teacher->department == 'Business Studies') selected @endif>Business Studies
+                                                    @if ($teacher->department == 'Registrar') selected @endif>Registrar
                                                 </option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="subject">Subject</label>
+                                            <label for="subject">Coures</label>
                                             <input class="form-control" type="text" name="subject"
                                                 value="{{ $teacher->subject }}">
                                         </div>
                                     </div>
 
+                                   
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for=" fathers_name">Father's name</label>
-                                            <input class="form-control" type="text" name=" fathers_name"
-                                                value="{{ $teacher->fathers_name }}">
+                                            <label for=" photo">Photo <small>(.jpg/.jpeg/.png)</small></label>
+                                            <input class="form-control p-1" type="file" name="photo">
+                                            <input type="hidden" name="old_photo" value="{{ $teacher->photo }}">
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for=" mothers_name">Mother's name</label>
-                                            <input class="form-control" type="text" name=" mothers_name"
-                                                value="{{ $teacher->mothers_name }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for=" gender">Gender</label>
                                             <select name="gender" class="form-control" required>
@@ -216,25 +155,8 @@ $submenu = $teacher->department; ?>
                                                     Other</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for=" dob">Date of birth</label>
-                                            <input class="form-control" type="date" name=" dob"
-                                                value="{{ $teacher->dob }}">
-                                        </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for=" photo">Photo <small>(.jpg/.jpeg/.png)</small></label>
-                                            <input class="form-control p-1" type="file" name="photo">
-                                            <input type="hidden" name="old_photo" value="{{ $teacher->photo }}">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="nid">NID</label>
-                                            <input class="form-control" type="text" name="nid"
-                                                value="{{ $teacher->nid }}">
-                                        </div>
+                                       
                                     </div>
 
                                     <div class="row">
@@ -251,46 +173,7 @@ $submenu = $teacher->department; ?>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for=" present_address">Present address</label>
-                                            <input class="form-control" type="text" name=" present_address"
-                                                value="{{ $teacher->present_address }}">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for=" permanent_address">Permanent address</label>
-                                            <input class="form-control" type="text" name=" permanent_address"
-                                                value="{{ $teacher->permanent_address }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="edu_qualification">Educational qualification</label>
-                                            <input class="form-control" type="text" name="edu_qualification"
-                                                value="{{ $teacher->edu_qualification }}">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="salary">Salary</label>
-                                            <input class="form-control" type="text" name="salary"
-                                                value="{{ $teacher->salary }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="edu_certificate">Highest academic certificate
-                                                <small>(.jpg/.jpeg/.png)</small></label>
-                                            <input class="form-control p-1" type="file" name="edu_certificate">
-                                            <input type="hidden" name="old_edu_certificate"
-                                                value="{{ $teacher->edu_certificate }}">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="cv">CV <small>(.pdf)</small></label>
-                                            <input class="form-control p-1" type="file" name="cv">
-                                            <input type="hidden" name="old_cv" value="{{ $teacher->cv }}">
-                                        </div>
-                                    </div>
+                                  
 
                                     <div class="text-right form-group">
                                         <button type="submit" class="btn  btn-primary">Update info</button>

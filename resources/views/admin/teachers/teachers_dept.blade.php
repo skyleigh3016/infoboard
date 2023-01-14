@@ -2,7 +2,7 @@
 @section('title')
     Teachers
 @endsection
-<?php $menu = 'Teachers';
+<?php $menu = 'Staffs';
 $submenu = $dept; ?>
 
 @section('content')
@@ -10,16 +10,16 @@ $submenu = $dept; ?>
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <b>Teachers ({{ $dept }})</b>
+                    <b>({{ $dept }})</b>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        <i class="fas fa-plus"></i> Add Teacher
+                        <i class="fas fa-plus"></i> Add {{ $dept }}
                     </button>
                 </div>
             </div>
             <div class="card-body table-responsive">
 
-                <table class="table table-bordered table-striped" id="example1">
+                <table class="table table-bordered table-striped" >
                     <thead>
                         <tr>
                             <th>Index</th>
@@ -57,8 +57,8 @@ $submenu = $dept; ?>
                                     <a href="{{ route('teachers.show', $item->id) }}"
                                         class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-                                    <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
-                                            class="bi bi-telephone"></i></a>
+                                    <!-- <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
+                                            class="bi bi-telephone"></i></a> -->
 
                                     <a href="mailto:{{ $item->email }}" class="btn btn-danger mr-1 px-1 py-0"
                                         target="blank"><i class="bi bi-envelope"></i></a>
@@ -76,7 +76,7 @@ $submenu = $dept; ?>
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-default text-dark rounded">
-                            <h5 class="modal-title" id="staticBackdropLabel">Create New teacher</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Create New Staff</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -99,7 +99,7 @@ $submenu = $dept; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" index">Teacher index</label>
+                                        <label for=" index">ID Number</label>
                                         <input class="form-control @error('index') is-invalid @enderror" type="text"
                                             name="index" value="{{ old('index') }}">
                                         @error('index')
@@ -121,18 +121,18 @@ $submenu = $dept; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="form-group col-md-6">
+                               
+                                    <div class="form-group">
                                         <label for="department">Department</label>
                                         <select name="department" class="form-control" required>
                                             <option disabled selected>Choose department</option>
-                                            <option value="Science">Science</option>
-                                            <option value="Humanities">Humanities</option>
-                                            <option value="Business Studies">Business Studies</option>
+                                            <option value="Faculty">Faculty</option>
+                                            <option value="OSAS">OSAS</option>
+                                            <option value="Registrar">Registrar</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="subject">Subject</label>
+                                    <!-- <div class="form-group col-md-6">
+                                        <label for="subject">Course</label>
                                         <input class="form-control @error('subject') is-invalid @enderror" type="text"
                                             name="subject" value="{{ old('subject') }}">
                                         @error('subject')
@@ -140,10 +140,10 @@ $submenu = $dept; ?>
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
-                                </div>
+                                    </div>-->
+                                
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" fathers_name">Father's name</label>
                                         <input class="form-control @error('fathers_name') is-invalid @enderror"
@@ -164,9 +164,9 @@ $submenu = $dept; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" gender">Gender</label>
                                         <select name="gender" class="form-control" required>
@@ -186,15 +186,24 @@ $submenu = $dept; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" photo">Photo <small>(.jpg/.jpeg/.png)</small></label>
                                         <input class="form-control p-1" type="file" name="photo">
                                     </div>
-
                                     <div class="form-group col-md-6">
+                                        <label for=" gender">Gender</label>
+                                        <select name="gender" class="form-control" required>
+                                            <option disabled selected>Choose gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- <div class="form-group col-md-6">
                                         <label for="nid">NID</label>
                                         <input class="form-control @error('nid') is-invalid @enderror" type="text"
                                             name="nid" value="{{ old('nid') }}">
@@ -203,7 +212,7 @@ $submenu = $dept; ?>
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="row">
@@ -230,7 +239,7 @@ $submenu = $dept; ?>
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for=" present_address">Present address</label>
                                         <input class="form-control @error('present_address') is-invalid @enderror"
@@ -253,9 +262,9 @@ $submenu = $dept; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="edu_qualification">Educational qualification</label>
                                         <input class="form-control @error('edu_qualification') is-invalid @enderror"
@@ -277,9 +286,9 @@ $submenu = $dept; ?>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="edu_certificate">Highest academic certificate
                                             <small>(.jpg/.jpeg/.png)</small></label>
@@ -289,7 +298,7 @@ $submenu = $dept; ?>
                                         <label for="cv">CV <small>(.pdf)</small></label>
                                         <input class="form-control p-1" type="file" name="cv">
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="modal-footer">

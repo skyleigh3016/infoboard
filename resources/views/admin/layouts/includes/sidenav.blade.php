@@ -38,16 +38,16 @@
                 </li>
 
                  <li class="nav-item @if ($menu == 'Users') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'Admin & Users') active @endif">
+                    <a href="#"class="nav-link @if ($menu == 'Admin & Users') active @endif">
                     <i class="nav-icon fas fa-user-plus"></i>
-                        <p> User Management <i class="fas fa-angle-left right"></i> </p>
+                        <p> User Management <i class="fas fa-angle-right right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
                             <a href="{{ route('admin.index') }}"
                                 class="nav-link @if ($submenu == 'admin') active @endif">
                                 <i class="bi bi-person-check-fill"></i>
-                                <p>admins</p>
+                                <p>Admins</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -58,8 +58,36 @@
                             </a>
                         </li>
 
+                    
+
                      
                         
+                    </ul>
+                </li>
+
+                <li class="nav-item @if ($menu == 'Story') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Home Mngt') active @endif">
+                    <i class="fas fa-home nav-icon"></i>
+                        <p> Home Management <i class="fas fa-angle-right right"></i> </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('home.slider') }}"
+                            class="nav-link @if ($submenu == 'Slider') active @endif">
+                            <i class="nav-icon bi bi-sliders"></i>
+                            <p> Slider </p>
+                            </a>
+                        </li> 
+                    </ul>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('topstoryslider.index') }}"
+                            class="nav-link @if ($submenu == 'Story') active @endif">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p> Top Story </p>
+                            </a>
+                        </li> 
                     </ul>
                 </li>
 
@@ -122,7 +150,7 @@
                 <li class="nav-item @if ($menu == 'Students') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Students') active @endif">
                         <i class="nav-icon fas fa-user-friends"></i>
-                        <p> Students <i class="fas fa-angle-left right"></i> </p>
+                        <p> Students <i class="fas fa-angle-right right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -187,15 +215,15 @@
                     </ul>
                 </li> -->
 
-                <li class="nav-item @if ($menu == 'Teachers') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'Teachers') active @endif">
+                <li class="nav-item @if ($menu == 'Staffs') menu-open @endif">
+                    <a href="#" class="nav-link @if ($menu == 'Staffs') active @endif">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                        <p> CMDI Staff <i class="fas fa-angle-left right"></i> </p>
+                        <p> CMDI Staff <i class="fas fa-angle-right right"></i> </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('teachers.index') }}"
-                                class="nav-link @if ($submenu == 'All_Teachers') active @endif">
+                                class="nav-link @if ($submenu == 'All_Staffs') active @endif">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>All Staff</p>
                             </a>
@@ -231,7 +259,16 @@
                     </ul>
                 </li> 
 
-                <!-- <li class="nav-item @if ($menu == 'Admission') menu-open @endif">
+                <li class="nav-item">
+                    <a href="{{ route('mailbox.index') }}"
+                        class="nav-link @if ($submenu == 'Message') active @endif">
+                        <i class="nav-icon fa fa-envelope" aria-hidden="true"></i>
+                        <!-- <i class="fa-duotone fa-video"></i> -->
+                        <p> Mailbox </p>
+                    </a>
+                </li>
+
+                <!--<li class="nav-item @if ($menu == 'Admission') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Admission') active @endif">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p> Admission <i class="fas fa-angle-left right"></i> </p>
@@ -254,7 +291,7 @@
                     </ul>
                 </li>
 
-                <!-- <li class="nav-header">others</li>
+                <li class="nav-header">others</li>
 
                 <li class="nav-item @if ($menu == 'Download') menu-open @endif">
                     <a href="#" class="nav-link @if ($menu == 'Download') active @endif">
@@ -277,7 +314,7 @@
                             </a>
                         </li>
                     </ul>
-                </li> -->
+                </li>-->
 
 
             </ul>

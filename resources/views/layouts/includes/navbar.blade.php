@@ -8,12 +8,12 @@
                 <img class="m-0" src="{{ asset('images/logos/cmdilogo.jpg') }}" height="40" alt="MyADC" />
             </a>
 
-            <!-- Search form -->
+            <!-- Search form
             <form class="input-group w-auto my-auto d-none d-sm-flex">
-                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"
+                <input autocomplete="on" type="search" class="form-control rounded" placeholder="Search"
                     style="min-width: 125px;" />
                 <span class="input-group-text  d-none d-lg-flex"><i class="fas fa-search "></i></span>
-            </form>
+            </form>-->
         </div>
         <!-- Left elements -->
 
@@ -69,21 +69,21 @@
                     href="{{ route('user.profile', Auth::user()->id) }}">
 
                     <img src="@if (Auth::user()->user_image) {{ asset('images/users') . '/' . Auth::user()->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
-                        class="rounded-circle" height="22" alt="User_photo" loading="lazy" />
+                        class="rounded-circle" height="40" alt="User_photo" loading="lazy" />
 
                     <strong class="d-none d-sm-block ms-1"
                         style="width: 100px; white-space:nowrap; overflow: hidden; text-overflow: ellipsis; ">{{ Auth::user()->name }}</strong>
                 </a>
             </li>
 
-            <li class="nav-item me-3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Messenger">
-                <a class="nav-link" href="{{ route('messenger') }}">
+            <li class="nav-item me-3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Chatify">
+                <a class="nav-link" href="{{ route('chatify') }}">
                     <span><i class="bi bi-chat-square-fill fa-lg"></i></span>
                 </a>
             </li>
 
 
-            <li class="nav-item dropdown me-3">
+            <!-- <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
                     role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bell fa-lg"></i>
@@ -100,7 +100,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
                     role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -113,6 +113,15 @@
                             <button type="button" class="btn bg-transparent shadow-0 px-3 py-2"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-key me-1"></i>
                                 Change password
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item py-1 px-0">
+
+                            <button type="button" class="btn bg-transparent shadow-0 px-3 py-2"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa-solid fa-user-pen"></i>
+                               Edit Profie
                             </button>
                         </a>
                     </li>
@@ -184,6 +193,53 @@
 
                 <div class="modal-footer text-right">
                     <button type="submit" class="btn btn-primary">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+
+                    
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        
+                                                
+                        <div class="form-group mt-4">
+                            <img src="{{ asset('images/users') . '/' . Auth::user()->user_image }}" class="rounded-circle" alt="Thumbnail" style="width: 300px">                        
+                             </div>
+                        <div class="form-group mt-4">
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="file" name="user_image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ Auth::user()->user_image}}">
+                          </div>
+                        
+                        <div class="form-group mt-4">
+                          <label for="name">Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value="{{Auth::user()->name }}"
+                            class="form-control"
+                          />
+                        </div>
+
+                  
+                </div>
+
+                <div class="modal-footer text-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

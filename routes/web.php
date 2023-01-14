@@ -41,8 +41,9 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UsersRoleController;
 use App\Http\Controllers\LearningController;
-
-
+use App\Http\Controllers\StoryController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,8 +60,8 @@ use App\Http\Controllers\LearningController;
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('infoboard.home');
+})->name('infoboard/home');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function() {
     //__Home routes
@@ -101,9 +102,7 @@ Route::get('/admission/procedure', function () {
 Route::post('/student/admission/store', [AdmissionController::class, 'store'])->name('student.admission.store');
 Route::post('/student/admission/verify', [AdmissionController::class, 'verify'])->name('student.admission.verify');
 
-
 require __DIR__.'/auth.php';
-
 
 /*
 |--------------------------------------------------------------------------
@@ -173,9 +172,9 @@ Route::group(['middleware' => 'admin'], function() {
 //infovoard route
 
 // Route::get('/infoboard/home', [InfoboardController::class, 'infoboard'])->name('infoboard.home');
-Route::get('/infoboard/home', function () {
-    return view('infoboard.infoboard');
-})->name('infoboard/home');
+Route::get('/Login', function () {
+    return view('welcome');
+})->name('welcome');
 
 //final event calendar
 Route::get('/calendar/event', [CalendarController::class, 'calendar'])->name('calendar.event');
@@ -188,33 +187,82 @@ Route::post('/update/event', [RoutineXIController::class, 'UpdateEvent'])->name(
 
 //admin announcement route
 Route::get('/home/announcement', [NoticeController::class, 'index'])->name('home.announcement');
-Route::get('/announcement/create', [NoticeController::class, 'create']);
-Route::post('/announcement/store', [RoutineXIController::class, 'ilagay'])->name('store.announcement');
 Route::get('/announcement/edit/{id}', [AnnouncementController::class, 'edit']);
 Route::put('/announcement/update/{id}', [AnnouncementController::class, 'update']);
-Route::get('/announcement/destroy/{id}', [AnnouncementController::class, 'delete']);
 Route::get('/announcement', [AnnouncementController::class, 'show']);
+Route::get('/announcement/create', [NoticeController::class, 'create'])->name('notices.create');
 Route::post('/update/announcement', [NoticeController::class, 'UpdateAnnouncement'])->name('update.announcement');
-
+Route::post('/announcement/store', [NoticeController::class, 'store'])->name('store.announcement');
+Route::get('/announcement/trash', [NoticeController::class, 'trash'])->name('announcement.trash');
+Route::get('/announcement/delete/{id}', [NoticeController::class, 'destroy'])->name('announcement.delete');
+Route::get('/announcement/restore/{id}', [NoticeController::class, 'restoreTrash'])->name('announcement.restore');
+Route::get('/announcement/archive/{id}', [NoticeController::class, 'archive'])->name('announcement.archive');
 
 
 //admin learning route
-Route::get('/home/learning', [LearningController::class, 'index'])->name('home.learning');
-Route::get('/learning/create', [LearningController::class, 'create']);
-Route::post('/learning/insert', [AdmissionController::class, 'ilagay'])->name('insert.video');
+Route::get('/home/learning', [AdmissionController::class, 'index'])->name('home.learning');
+Route::get('/learning/create', [LearningController::class, 'create'])->name('learning.create');
+Route::post('/learning/insert', [LearningController::class, 'insert'])->name('insert.video');
 Route::get('/learning/edit/{id}', [LearningController::class, 'edit']);
-Route::post('/learning/update/{id}', [AdmissionController::class, 'UpdateLearning'])->name('update.learning');
+Route::post('/learning/update', [AdmissionController::class, 'UpdateLearning'])->name('update.learning');
 Route::get('/learning/destroy/{id}', [LearningController::class, 'delete']);
 Route::get('/learningvideo', [LearningController::class, 'show']);
+
 
 //admin Users route
 Route::get('/admin/user', [UsersRoleController::class, 'index'])->name('users.index');
 Route::get('/admin/user/role', [UsersRoleController::class, 'role'])->name('role.index');
 Route::get('/admin/user/admin', [UsersRoleController::class, 'admin'])->name('admin.index');
 Route::post('/admin/insert/admin', [UsersRoleController::class, 'AdminInsert'])->name('admin.insert');
+Route::get('/admin/trash', [UsersRoleController::class, 'trash'])->name('admin.trash');
+Route::get('/admin/restore/{id}', [UsersRoleController::class, 'restoreTrash'])->name('admin.restore');
+Route::get('/admin/archive/{id}', [UsersRoleController::class, 'archive'])->name('admin.archive');
+
+Route::get('/user/trash', [UsersRoleController::class, 'UserTrash'])->name('user.trash');
+Route::get('/user/restore/{id}', [UsersRoleController::class, 'UserRestoreTrash'])->name('user.restore');
+Route::get('/user/archive/{id}', [UsersRoleController::class, 'UserArchive'])->name('user.archive');
 
 Route::get('/admin/edit/{id}', [UsersRoleController::class, 'EditAdmin'])->name('admin.edit');
 Route::post('/update/admin', [UsersRoleController::class, 'UpdateAdmin'])->name('update.admin');
 Route::post('/admin/insert/user', [UsersRoleController::class, 'UserInsert'])->name('user.insert');
 Route::get('/user/edit/{id}', [UsersRoleController::class, 'EditUser'])->name('user.edit');
 Route::post('/update/user', [UsersRoleController::class, 'UpdateUser'])->name('update.user');
+
+Route::post('/Profile/Update', [UsersRoleController::class, 'ProfileUpdate'])->name('profile.update');
+
+//top story
+Route::get('/story/index', [StoryController::class, 'index'])->name('topstoryslider.index');
+Route::get('/story/create', [StoryController::class, 'create'])->name('topstoryslider.create');
+Route::post('/story/store', [StoryController::class, 'store'])->name('store.story');
+Route::get('/story/show', [StoryController::class, 'show'])->name('topstoryslider.show');
+Route::put('/story/update',[StoryController::class, 'update'])->name('update.story');
+Route::get('/story/edit/{id}', [StoryController::class, 'edit'])->name('topstoryslider.edit');
+Route::get('/story/destroy/{id}', [StoryController::class, 'Destroy'])->name('story.delete');
+//Route::post('/story/update', [StoryController::class, 'UpdateStory'])->name('update.story');
+Route::resource('stories', StoryController::class);
+Route::get('/story/trash', [StoryController::class, 'trash'])->name('story.trash');
+Route::get('/story/restore/{id}', [StoryController::class, 'restoreTrash'])->name('story.restore');
+Route::get('/story/archive/{id}', [StoryController::class, 'archive'])->name('story.archive');
+
+//slider
+Route::get('/home/slider', [SliderController::class, 'index'])->name('home.slider');
+Route::get('/add/slider', [SliderController::class, 'AddSlider'])->name('add.slider');
+Route::post('/store/slider', [SliderController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/slider/edit/{id}', [SliderController::class, 'Edit']);
+Route::put('/slider/update/{id}', [SliderController::class, 'Update']);
+Route::get('/slider/trash', [SliderController::class, 'trash'])->name('slider.trash');
+Route::get('/slider/destroy/{id}', [SliderController::class, 'Destroy'])->name('slider.delete');
+Route::get('/slider/restore/{id}', [SliderController::class, 'restoreTrash'])->name('slider.restore');
+Route::get('/Slider/archive/{id}', [SliderController::class, 'archive'])->name('slider.archive');
+
+Route::get('/infoboard/privacy', function () {
+    return view('privacy');
+})->name('infoboard.privacy');
+
+Route::get('/infoboard/terms', function () {
+    return view('terms');
+})->name('infoboard.terms');
+
+Route::post('/infoboard/contact', [ContactController::class, 'store'])->name('store.contact');
+Route::get('/mail/index', [ContactController::class, 'index'])->name('mailbox.index');
+Route::get('/mail/destroy/{id}', [ContactController::class, 'destroy'])->name('destroy.mail');

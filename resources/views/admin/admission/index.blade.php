@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Admission
+    Learning
 @endsection
 <?php $menu = 'Learnings';
 $submenu = 'video'; ?>
@@ -256,18 +256,19 @@ $(document).ready(function()
      </div>
      <div class="col-sm-6">
         
-      <a href="#addEmployeeModal" class="btn  btn-primary btn-sm" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Learning Video</span></a>
+        <a href="{{route('learning.create') }}" class="btn  btn-primary btn-sm" ><i class="material-icons">&#xE147;</i> <span>Add Learning Video</span></a>
+
       </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" width="5%">id</th>
+                        <th scope="col" width="15%">id</th>
                         <th scope="col" width="20%">Title</th>
-                        <th scope="col" width="50%">Description</th>
-                        <th scope="col" width="15%">Video</th>
-                        <th scope="col" width="10%">Action</th>
+                        <th scope="col" width="25%">Description</th>
+                        <th scope="col" width="25%">Video</th>
+                        <th scope="col" width="25%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -275,18 +276,24 @@ $(document).ready(function()
                     <tr>
     <td class = "id">{{ $learning -> id }}</td>
     <td class = "title">{{ $learning -> title }}</td>
-    <td class = "description">{{ $learning -> description }}</td>
-    <td class = "video"><video width="120px" height="120px" controls oncanplay="myFunction()">
-                                <source src="{{asset('learning')}}" type="video/mp4">
-                              </video>
+    <td class = "description">{!! $learning -> description !!}</td>
+    <!-- <td class = "video"><video controls class="img-fluid w-100"
+    src="{{asset('learning')}}" alt="video">
+                            </video>
+                            <td> -->
+    <td class = "video">
+
+                              <video width="400px" height="400px" class="slider-img" controls oncanplay="myFunction()">
+      <source  src="{{asset($learning->video)}}" alt="Announcement image"  type="video/mp4"><video>
                             <td>
-    <td class="d-flex justify-content-center">
+    <td class="d-flex justify-content-left">
+
+    <a href="{{url('learning/edit/'.$learning->id)}}" class="btn btn-primary mr-1 px-1 py-0 "><i class="bi bi-pencil-square"  data-toggle="tooltip"></i></a>
+
+   
 
 
-
-<button type="button" class="btn btn-primary mr-1 px-1 py-0 edit2" data-bs-target="{{ '#editEmployeeModal' . $learning->id }}" data-target="#editEmployeeModal" data-toggle="modal"
->
-    <i class="bi bi-pencil-square" data-toggle="tooltip" ></i>
+    
 </button>
 <!-- noticecontroller the logic to delete -->
 <form action="{{ route('admission.destroy', $learning->id) }}" method="post">
@@ -311,7 +318,7 @@ $(document).ready(function()
   
         </div>
     </div>
- <!-- Add Modal HTML -->
+ <!-- Add Modal HTML 
  <div id="addEmployeeModal" class="modal fade">
   <div class="modal-dialog modal-dialog-scrollable">
    <div class="modal-content">
@@ -347,12 +354,11 @@ $(document).ready(function()
    </div>
   </div>
  </div>
-
- <!-- edit Modal HTML  -->
+-->
+ <!-- edit Modal HTML  
  <div id="editEmployeeModal" class="modal fade">
   <div class="modal-dialog modal-dialog-scrollable">
    <div class="modal-content">
-   <form action="{{route('update.learning', $learning->id)}}" method="POST" enctype="multipart/form-data">
     @csrf  
     
     <input type="text" hidden id = "id" name = "id" value = ""> 
@@ -388,4 +394,5 @@ $(document).ready(function()
    </div>
   </div>
  </div>
+ -->
 @endsection

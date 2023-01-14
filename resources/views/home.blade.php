@@ -215,6 +215,7 @@ $rightbarImage = 'study_chat.png';
                                                             value="{{ $item->video }}">
                                                     </div>
 
+                                                    
                                                     <select class="form-select form-select-sm mt-3 w-25"
                                                         name="visibility">
                                                         <option @if ($item->visibility == 1) selected @endif
@@ -295,10 +296,11 @@ $rightbarImage = 'study_chat.png';
 
                             {{-- Comment --}}
                             <div class="vr"></div>
+                            <form method="post">
                             <a class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
                                 data-bs-target="{{ '#postCmnt' . $item->id }}"><i class="fa-regular fa-comment"></i>
                                 {{ '(' . $comments->count() . ')' }}</a>
-
+                            </form>
                             <!-- Modal for comment view -->
                             <div class="modal fade" id="{{ 'postCmnt' . $item->id }}" tabindex="-1"
                                 aria-labelledby="{{ 'postCmnt' . $item->id . 'Label' }}" aria-hidden="true"
@@ -395,11 +397,12 @@ $rightbarImage = 'study_chat.png';
                             </div>
 
 
-                            {{-- Share --}}
+                            <!-- {{-- Share --}}
                             <div class="vr"></div>
+                            <form method="post">
                             <a href="" class="btn btn-link w-100 text-dark px-0" data-bs-toggle="modal"
                                 data-bs-target="{{ '#postLink' . $item->id }}"><i class="far fa-share-square"></i></a>
-
+                            </form> -->
                             <!-- Modal for copy link -->
                             <div class="modal fade" id="{{ 'postLink' . $item->id }}" tabindex="-1"
                                 aria-labelledby="{{ 'postLink' . $item->id . 'Label' }}" aria-hidden="true"

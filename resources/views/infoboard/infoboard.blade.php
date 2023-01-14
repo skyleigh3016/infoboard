@@ -1,6 +1,14 @@
 @extends('infoboard.layouts.app')
 
+@php
+$stories = DB::table('stories')->get();
+
+
+@endphp
+
+
 @section('content')
+
 
 <!--welcome-css links-->
 <link href="{{ URL::asset('/css/welcome.css') }}" rel="stylesheet">
@@ -112,7 +120,7 @@
 <div class="home-video">
   <div class="vid-div">
         <div class="video">
-            <video src="video/video1.mp4" controls autoplay> </video>
+            <video  src="{{ asset('video/video1.mp4') }}" controls autoplay> </video>
             
         </div>
   </div>
@@ -131,26 +139,16 @@
 
 <div class="top-stories-div">
 
-        <h3 class="heading">Top stories</h3>
+        <div style="padding-bottom: 20px"><h3 class="heading" >Top Stories</h3></div>
 
         <div class="phar-imag-div">
             <div class="pharagraph-div">
-                <h3 class="title">Victorious ICT WEEK 2022 Celebration</h3>
-                <p>
-                    The ICT WEEK 2022 commenced its grandios celebration on November 21-23, 2022 at the CARD-MRI Development Institute Inc. Through the initiatives of CMDI Department of Information and Communications Technology and ICT Club with the guidance of the DICT Dean, Engr. Reagan B. Ricafort,
-                    BSIS Program Head, Ms. Maria Ana M. Toledo and support of the Club Adviser, spearheaded by Ms. Pilar M. Fandiño, Mr. Lloyd Christopher Dacles and Mr. James Gañas, the event was completed successfully.
-                </p>
-                <p>
-                    It was participated by all the courses and programs under the DICT including BS in Information Systems, BS in Accounting Information Systems, Senior High School Grade 11 and 12 ICT. All students show enthusiasm, excitement and active participation in every activities throughout the 3-day long event. 
-                </p>
-                <p>
-                    Grade 11 Stewardship was hailed as the OVERALL CHAMPION of the ICT WEEK 2022. 
-                </p>
-
-
+            @foreach($stories as $story)
+                <div><h2 style="color:black">{{ $story -> title }}</h2></div>
+                <div> {!!$story->description!!}</div>
             </div>
             <div class="image-div">
-                <img id="myImg" class="insidephoto" src="{{ asset('images/ICT.jpg') }}" style="width:100%;max-width:400px; ">
+                <img id="myImg" class="insidephoto" src="/images/{{ $story->image }}" style="width:100%;max-width:400px; ">
             </div>
 
             
@@ -162,7 +160,7 @@
 
 
 
-
+            @endforeach
         </div>
     </div>
 

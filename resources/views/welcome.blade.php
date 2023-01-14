@@ -53,7 +53,7 @@
                     <div class="card px-4 py-3 rounded-8 shadow-lg">
                         <div class="card-header">
                             <h2>Login</h2>
-                            <p>Welcome to CARD-MRI Development Institute Inc.</p>
+                            <p>Welcome to CARD-MRI Development Institute, Inc.</p>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
@@ -92,9 +92,9 @@ class="form-control py-2  @error('password') is-invalid @enderror"
 
                                 <div class="d-flex justify-content-between pt-3">
 
-                                    <button type="button" class="btn btn-link px-0 forgetPassBtn"
+                                    <!-- <button type="button" class="btn btn-link px-0 forgetPassBtn"
                                         onclick="location.href='{{ route('password.request') }}'" @auth disabled
-                                        @endauth>Forgot your password?</button>
+                                        @endauth>Forgot your password?</button> -->
 
                                     <button type="submit" class="btn btn-primary " @auth disabled @endauth>
                                         <div class="d-flex">Login <i class="fas fa-sign-in-alt mt-1 ms-1"></i></div>
@@ -130,9 +130,9 @@ class="form-control py-2  @error('password') is-invalid @enderror"
                 </div>
                 <div class="ms-1">
                     &middot;
-                    <a href="#">Privacy Policy</a>
+                    <a href="{{ route('infoboard.privacy') }}">Privacy Policy</a>
                     &middot;
-                    <a href="#">Terms &amp; Conditions</a>
+                    <a href="{{ route('infoboard.terms') }}">Terms &amp; Conditions</a>
                 </div>
             </div>
         </div>

@@ -70,6 +70,7 @@ $submenu = 'Students'; ?>
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
 
             <!-- Modal for add student -->
@@ -114,7 +115,7 @@ $submenu = 'Students'; ?>
 
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for=" session">Session</label>
+                                        <label for=" session">Residency Range</label>
                                         <input class="form-control @error('session') is-invalid @enderror" type="text"
                                             name=" session" value="{{ old(' session') }}">
                                         @error('session')
@@ -130,6 +131,11 @@ $submenu = 'Students'; ?>
                                             <option value="BSIS">BSIS</option>
                                             <option value="BSAIS">BSAIS</option>
                                             <option value="BSE">BSE</option>
+                                            <option value="BSE">BSA</option>
+                                            <option value="BSE">BSTM</option>
+                                            <option value="BSE">ICT</option>
+                                            <option value="BSE">ABM</option>
+                                            <option value="BSE">HE</option>
                                         </select>
                                     </div>
                                 </div>

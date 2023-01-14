@@ -16,14 +16,15 @@ class LearningController extends Controller
 
     public function index()
     {
-        $Learnings=Learning::orderBy('id','asc')->paginate(5);
-        return view('admin.Learning.index',compact('Learnings'));
+        $Learnings=Learning::orderBy('id','desc')->paginate(5);
+        return view('home.learning',compact('Learnings'));
         
     }
     public function create()
     {
-        return view('admin.Learning.create');
+        return view('admin.admission.create');
     }
+
     public function insert(Request $request)
     {
        $request->validate([
@@ -49,7 +50,9 @@ class LearningController extends Controller
     {
 
         $learnings= Learning::find($id);
-        return view('admin.Learning.edit',compact('learnings'));
+        return view('admin.admission.edit',compact('learnings'));
+
+        
             
     }
     public function update(Request $request ,$id) 
@@ -90,6 +93,56 @@ class LearningController extends Controller
         }
         return Redirect('/home/learning')->with('success','Learning updated Successfully');
     }
+
+    public function UpdateLearning(Request $request) 
+    {
+
+       
+
+        
+        
+        $validate = $request->validate([
+            'video' => 'mimes:mp4,ogx,oga,ogv,ogg,webm'
+          ]);
+  
+          
+  
+          $video = $request->file('video');
+          if($video){
+          $file=$request->file('video');
+          $file->move('learning',$file->getClientOriginalName());
+          $file_name=$file->getClientOriginalName();
+          $last_vid =  'learning/'.$file_name;
+
+            $update = [
+                'title' => $request->title,
+        'description' => $request->description,
+        'image' =>  $last_vid,
+        'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('learnings')->where('id',$request->id)->update($update);
+           
+
+        
+
+        }else{
+
+            $update = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'updated_at' => Carbon::now()
+    
+            ];
+            DB:: table('learnings')->where('id',$request->id)->update($update);
+
+      
+        
+        }
+        $notify = ['message'=>'Learnings successfully Updated!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
+    }
+
     public function delete(Request $request ,$id)
     {
 

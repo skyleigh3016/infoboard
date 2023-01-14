@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Teachers & Students info |
+    Staffs & Students info |
 @endsection
 @php
 $menu = 't_s_info';
@@ -15,13 +15,13 @@ $menu = 't_s_info';
 
             <div class="card mb-4">
                 <div class="card-body px-3">
-                    <h4 class="card-title text-center">Teaches & Students</h4>
+                    <h4 class="card-title text-center">Staffs & Students</h4>
                     <hr>
                     <div class="list-group list-group-light" id="list-tab" role="tablist">
 
                         <a class="list-group-item list-group-item-action active px-3 border-0" id="list-teacher-list"
                             data-mdb-toggle="list" href="#list-teacher" role="tab"
-                            aria-controls="list-teacher">Teachers</a>
+                            aria-controls="list-teacher">Staffs</a>
 
                         <a class="list-group-item list-group-item-action px-3 border-0" id="list-student-list"
                             data-mdb-toggle="list" href="#list-student" role="tab"
@@ -95,8 +95,8 @@ $menu = 't_s_info';
                                         <tr>
                                             <th>Name</th>
                                             <th>Session</th>
-                                            <th>Student ID</th>
-                                            <th>Department</th>
+                                            <th>Year level</th>
+                                            <th>Course</th>
                                             <th>Mail</th>
                                         </tr>
                                     </thead>
@@ -105,7 +105,7 @@ $menu = 't_s_info';
                                             <tr>
                                                 <th>{{ $item->name }}</th>
                                                 <td>{{ $item->session }}</td>
-                                                <td>{{ $item->st_id }}</td>
+                                                <td>{{ $item->c_class }}</td>
                                                 <td>{{ $item->department }}</td>
                                                 <td class="text-center"><a class="btn btn-danger px-1 py-0"
                                                         href="mailto:{{ $item->email }}"><i
