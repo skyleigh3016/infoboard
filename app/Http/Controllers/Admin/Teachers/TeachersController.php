@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Teachers;
-
+use App\Imports\TeachersImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Str;
 use Auth;
 use Image;
 use File;
+
+
 
 class TeachersController extends Controller
 {
@@ -173,4 +177,26 @@ class TeachersController extends Controller
         $notify = ['message'=>'Teacher successfully removed!', 'alert-type'=>'success'];
         return redirect()->route('teachers.index')->with($notify);
     }
+
+    // public function import() 
+    // {
+    //     Excel::import(new TeachersImport, request()->file('file'));
+        
+       
+    //     $notify = ['message' => 'New Students information successfully Inserted!', 'alert-type' => 'success'];
+    //     return redirect()->back()->with($notify);
+        
+    // }
+
+    public function import() 
+    {
+        Excel::import(new TeachersImport, request()->file('file'));
+        
+       
+        $notify = ['message' => 'New Students information successfully Inserted!', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
+        
+    }
+
+   
 }

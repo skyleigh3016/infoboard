@@ -13,7 +13,10 @@ $submenu = 'Students'; ?>
                     <b>students</b>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        <i class="fas fa-plus"></i> Add students
+                         Add students
+                    </button>
+                    <button type="button" class="btn  btn-info btn-sm" data-toggle="modal" data-target="#staticBackdrop1">
+                         upload students
                     </button>
                 </div>
             </div>
@@ -72,6 +75,9 @@ $submenu = 'Students'; ?>
                 </table>
                 
             </div>
+
+            
+  
 
             <!-- Modal for add student -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -208,6 +214,51 @@ $submenu = 'Students'; ?>
                             <div class="modal-footer">
                                 <button type="reset" class="btn">Reset</button>
                                 <button type="submit" class="btn  btn-primary">Add student</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Modal for upload student -->
+            <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-default text-dark rounded">
+                            <h5 class="modal-title" id="staticBackdropLabel">Create New student</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form action="{{ route('students.import') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+
+                               
+
+                               
+
+                                
+
+                                
+
+                            
+                               
+                              
+                                    <div class="form-group col-md-6">
+                                        <label for=" photo">Photo <small>(.cvs/)</small></label>
+                                        <input class="form-control p-1" type="file" name=" file">
+                                    </div>
+                               
+
+                               
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" class="btn">Reset</button>
+                                <button type="submit" class="btn  btn-primary">Upload student</button>
                             </div>
                         </form>
                     </div>

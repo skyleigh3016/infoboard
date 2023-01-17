@@ -131,7 +131,7 @@ $submenu = $dept; ?>
                                             <option value="Registrar">Registrar</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="subject">Course</label>
                                         <input class="form-control @error('subject') is-invalid @enderror" type="text"
                                             name="subject" value="{{ old('subject') }}">
@@ -140,7 +140,7 @@ $submenu = $dept; ?>
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>-->
+                                    </div>
                                 
 
                                 <!-- <div class="row">

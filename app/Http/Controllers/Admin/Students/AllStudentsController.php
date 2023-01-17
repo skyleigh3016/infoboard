@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use Auth;
 use Image;
 use File;
+use App\Imports\StudentsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AllStudentsController extends Controller
 {
@@ -223,4 +225,15 @@ class AllStudentsController extends Controller
             return redirect()->route('hsc_examinee.index')->with($notify);
         }
     }
+
+    public function import() 
+    {
+        Excel::import(new StudentsImport, request()->file('file'));
+        
+       
+        $notify = ['message' => 'New Students information successfully Inserted!', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
+        
+    }
+    
 }

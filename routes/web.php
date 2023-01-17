@@ -266,3 +266,30 @@ Route::get('/infoboard/terms', function () {
 Route::post('/infoboard/contact', [ContactController::class, 'store'])->name('store.contact');
 Route::get('/mail/index', [ContactController::class, 'index'])->name('mailbox.index');
 Route::get('/mail/destroy/{id}', [ContactController::class, 'destroy'])->name('destroy.mail');
+
+Route::post('/student/import', [AllStudentsController::class, 'import'])->name('students.import');
+Route::post('/teacher/import', [TeachersController::class, 'import'])->name('teachers.import');
+
+Route::get('/group', [App\Http\Controllers\HomeController::class, 'index'])->name('groups');
+
+Route::post('gcmessage', 'App\Http\Controllers\HomeController@sendMessage');  // 
+Route::get('/gcmessage/{id}', 'App\Http\Controllers\HomeController@getMessage')->name('gcmessage'); 
+Route::get('/ShowgcMassage/{id}', 'App\Http\Controllers\HomeController@ShowMassage'); 
+Route::get('/gcmessag/{id}', 'App\Http\Controllers\HomeController@getMessag')->name('gcmessages'); 
+Route::get('/subscribe', 'App\Http\Controllers\HomeController@subscribe');
+Route::delete('/unFollow/{id}', 'App\Http\Controllers\HomeController@remove_user'); 
+/////////////////////  
+Route::get('/group/create', 'App\Http\Controllers\GroupController@create_form');
+Route::post('/group/create', 'App\Http\Controllers\GroupController@create');
+Route::get('/group/join', 'App\Http\Controllers\GroupController@join_form');
+Route::post('/group/join', 'App\Http\Controllers\GroupController@join');
+
+Route::get('/group/edit/{id}', 'App\Http\Controllers\GroupController@edit');
+
+Route::post('/group/update/{id}', 'App\Http\Controllers\GroupController@update');
+
+Route::delete('/group/delete/{id}', 'App\Http\Controllers\GroupController@deleteGroup');
+
+Route::get('/group/members_list/{id}', 'App\Http\Controllers\GroupController@members_list');
+
+Route::get('/remove_user/{id}/{user_id}', 'App\Http\Controllers\GroupController@remove_user');

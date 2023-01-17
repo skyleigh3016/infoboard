@@ -36,12 +36,18 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate=User::where([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'exists:students'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_image' => ['required'],
-        ]);
+        ])->orWhere([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'exists:teachers'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'user_image' => ['required'],
+        ])->first();
+
 
 
         
