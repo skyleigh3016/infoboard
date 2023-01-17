@@ -262,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" id="example1">
                 <thead>
                     <tr>
                         <th scope="col" width="5%" hidden >id</th>

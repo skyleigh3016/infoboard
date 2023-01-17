@@ -22,7 +22,7 @@ $submenu = 'Students'; ?>
             </div>
             <div class="card-body table-responsive">
 
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="example1">
                     <thead>
                         <tr>
                             <th>ID</th>

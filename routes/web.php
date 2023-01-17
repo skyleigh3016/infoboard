@@ -293,3 +293,8 @@ Route::delete('/group/delete/{id}', 'App\Http\Controllers\GroupController@delete
 Route::get('/group/members_list/{id}', 'App\Http\Controllers\GroupController@members_list');
 
 Route::get('/remove_user/{id}/{user_id}', 'App\Http\Controllers\GroupController@remove_user');
+
+Route::resource('groups', 'GroupController');
+    
+    
+    

@@ -67,6 +67,12 @@ class AllStudentsController extends Controller
             
            
         ];
+        $data1 = [
+         
+            'email' => $request->email,
+            
+           
+        ];
 
         if ($request->file('photo')) {
             $image = $request->file('photo');
@@ -83,7 +89,7 @@ class AllStudentsController extends Controller
     
         // dd($data);
         DB::table('students')->insert($data);
-
+        DB::table('validations')->insert($data1);
         $notify = ['message' => 'New student successfully added!', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }
@@ -154,6 +160,15 @@ class AllStudentsController extends Controller
             'email' => $request->email,
            
         ];
+        // $email = $request->email;
+
+        $data1 = [
+         
+            'email' => $request->email,
+            
+           
+        ];
+        
 
         if ($request->photo) {
 
@@ -173,10 +188,12 @@ class AllStudentsController extends Controller
         else {
             $data['photo'] = $request->old_photo;
         }
-
+       
         
         // dd($data);
         DB::table('students')->where('id', $id)->update($data);
+        DB::table('validations')->where('email', $request->old_email)->update($data1);
+       
 
         $notify = ['message' => 'Student information successfully updated!', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);

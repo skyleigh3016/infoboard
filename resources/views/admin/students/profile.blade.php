@@ -113,6 +113,7 @@ $submenu = $item->c_class; ?>
                                 <form action="{{ route('students.update', $item->id) }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden"  value="{{ $item->email }}" name="old_email">
                                     <input type="hidden" name="_method" value="put">
 
                                     <div class="row">
@@ -225,7 +226,8 @@ $submenu = $item->c_class; ?>
                                         <div class="form-group col-md-6">
                                             <label for=" email">Email</label>
                                             <input class="form-control @error('email') is-invalid @enderror"
-                                                type="email" name=" email" value="{{ $item->email }}">
+                                                type="email" name="email" value="{{ $item->email }}">
+                                               
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

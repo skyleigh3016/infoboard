@@ -47,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         //             }
         //         });
 		// 		view()->composer('*', function($view)
+         
         //         {
         //             if (Auth::check()) {
 		// 				$my_id = Auth::id();

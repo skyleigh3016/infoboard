@@ -66,6 +66,10 @@ class TeachersController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
         ];
+        $data1 = [
+            
+            'email' => $request->email,
+        ];
 
         if ($request->file('photo')) {
             $image = $request->file('photo');
@@ -83,7 +87,7 @@ class TeachersController extends Controller
        
 
         DB::table('teachers')->insert($data);
-
+        DB::table('validations')->insert($data1);
         $notify = ['message' => 'New teacher successfully added!', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }

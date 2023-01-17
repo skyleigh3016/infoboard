@@ -261,7 +261,8 @@ $(document).ready(function()
       </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover">
+            <div class="card-body table-responsive">
+            <table class="table table-striped table-hover" id="example1">
                 <thead>
                     <tr>
                         <th scope="col" width="5%">id</th>
