@@ -91,8 +91,8 @@ $submenu = 'Students'; ?>
                                         <a href="{{ route('students.show', $item->id) }}"
                                             class="btn btn-info mr-1 px-1 py-0"><i class="bi bi-person"></i></a>
 
-
-                                        <a href="#" class="btn btn-danger px-1 py-0"
+                              
+                                        <a href="mailto:{{ $item->email }}" class="btn btn-danger px-1 py-0"
                                             target="blank"><i class="bi bi-envelope"></i></a>
                                     </div>
                                     {{-- @if ($item->c_class != 'Old_Student')

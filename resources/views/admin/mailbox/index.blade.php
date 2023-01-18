@@ -5,6 +5,7 @@
 <?php $menu = 'Message';
 $submenu = 'Message'; ?>
 
+
 @section('content')
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -284,6 +285,8 @@ $(document).ready(function()
 
     
     <td class="d-flex justify-content">
+    <a href="mailto:{{ $contact->email }}" class="btn btn-danger mr-1 px-1 py-0"
+                                        target="blank"><i class="bi bi-envelope"></i></a>
     <!-- noticecontroller the logic to delete -->
     <form action="{{route('destroy.mail',$contact->id)}}" method="GET">
     @csrf

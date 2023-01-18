@@ -7,7 +7,7 @@
         <i class="fas fa-calendar-alt fa-lg text-info me-3"></i> School Event</a> -->
 
     <a href="{{ route('videos') }}" class="list-group-item list-group-item-action px-3 border-0">
-        <i class="fas fa-video fa-lg text-danger me-3"></i> Videos</a>
+        <i class="fas bi-collection-play-fill fa-lg text-danger me-3"></i> Videos</a>
 
   
     <!-- <a href="{{ route('teacher_student_info') }}" class="list-group-item list-group-item-action px-3 border-0">

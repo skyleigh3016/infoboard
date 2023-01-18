@@ -34,7 +34,7 @@
 
             <li class="nav-item me-4" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Video">
                 <a class="nav-link  @if ($menu == 'videos') active @endif" href="{{ route('videos') }}">
-                    <span><i class="fas fa-video fa-lg"></i></span>
+                    <span><i class="fas bi-collection-play-fill fa-lg "></i></span>
                 </a>
             </li>
 

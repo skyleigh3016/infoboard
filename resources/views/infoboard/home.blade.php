@@ -1,19 +1,12 @@
 
-
 @php
 $stories = DB::table('stories')
 ->whereNull('deleted_at')
-
 ->get();
-
-
-
 @endphp
 
 @php
 $sliders = DB::table('sliders')->get();
-
-
 @endphp
 
 
@@ -148,7 +141,6 @@ $sliders = DB::table('sliders')->get();
 <script>
 let slideIndex = 0;
 showSlides();
-
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -158,7 +150,6 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1} 
   slides[slideIndex-1].style.display = "flex";  
-
   setTimeout(showSlides, 25500); // Change image every 2 seconds
 }
 </script>
@@ -300,11 +291,9 @@ var slidesIndex = [1,1];
 var slideId = ["mySlides", "phar-imag-div"]
 showDivs(1, 0);
 showDivs(1, 1);
-
 function plusDivs(n, no) {
   showDivs(slidesIndex[no] += n, no);
 }
-
 function showDivs(n, no) {
   var i;
   var x = document.getElementsByClassName(slideId[no]);
@@ -369,7 +358,7 @@ function showDivs(n, no) {
                 </div>
 
                 <h3>Pursue Accounting Career</h3>
-                <p>Strives to foster qualities that improve a student's professional and research competence, understanding the societal duties, and respect for an accountant's high level of honesty and objectivity.</p>
+                <p>Strives to foster qualities that improve a student's professional and research competence, understanding the societal duties, and respect for an accountant's high level of honesty and objectivity.</p>
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -441,7 +430,6 @@ function showDivs(n, no) {
      $('.carousel').flipster({
          style: 'carousel',
          spacing: -0.3,
-
      });
  </script>
 

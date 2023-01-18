@@ -51,7 +51,7 @@ $submenu = 'All_Staffs'; ?>
                             <th>Photo</th>
                             <th>Name & Position</th>
                             <th>Department</th>
-                            <!-- <th>Course</th> -->
+                            <th>Course</th>
                             <th>Phone</th>
                             <th>More</th>
                         </tr>
@@ -86,8 +86,7 @@ $submenu = 'All_Staffs'; ?>
                                     <!-- <a href="tel:{{ $item->phone }}" class="btn btn-success mr-1 px-1 py-0"><i
                                             class="bi bi-telephone"></i></a> -->
 
-                                    <a href="mailto:{{ $item->email }}" class="btn btn-danger mr-1 px-1 py-0"
-                                        target="blank"><i class="bi bi-envelope"></i></a>
+                                    <a href="mailto:{{ $item->email }}" class="btn btn-danger mr-1 px-1 py-0" target="blank"><i class="bi bi-envelope"></i></a>
 
                                 </td>
                             </tr>
