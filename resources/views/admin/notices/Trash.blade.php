@@ -278,7 +278,7 @@ $submenu = ''; ?>
                             <tr>
                                 <td class = "id">{{ $announcement -> id }}</td>
                                 <td class = "title">{{ $announcement -> title }}</td>
-                                <td class = "description">{{ $announcement -> description }}</td>
+                                <td class = "description">{!! $announcement -> description !!}</td>
                                 <td class = "image"><img src="{{asset($announcement->image)}}" class="img img-responsive" style="hight:120px; width:120px;"></td>
                                 
                                 <td class="d-flex justify-content-center">

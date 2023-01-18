@@ -118,7 +118,7 @@ p {
            
                 <div class="col-md-11 offset-1 mt-5 mb-5">
 
-                    <div style = "display:center;  padding-top: 5px; padding-right: 80px; padding-bottom: 5px; padding-left: 5px;" id="calendar">
+                    <div style = "margin-top:160px; margin-bottom:160px; display:center;  padding-top: 5px; padding-right: 80px; padding-bottom: 5px; padding-left: 5px;" id="calendar">
 
                     </div>
 
@@ -126,10 +126,10 @@ p {
             </div>
 
 <!--welcome css-->
-<footer style = "" id="bottom-id" class="bottom-div">
+<footer id="bottom-id" class="bottom-div">
 <div class="bottom-line">
 
-      <div class="mr-md-auto text-center text-md-left">
+      <div class="kakaiba">
         <div class="copyright" >
           
           &copy; Copyright <strong><span>Card-MRI Development Institute, Inc.</span></strong> All Rights Reserved

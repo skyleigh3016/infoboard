@@ -54,9 +54,9 @@ use App\Http\Controllers\ContactController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/email/verify', function () {
-//     return view('auth.verify-email');
-// })->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
 
 Route::get('/', function () {
@@ -221,13 +221,12 @@ Route::get('/admin/archive/{id}', [UsersRoleController::class, 'archive'])->name
 Route::get('/user/trash', [UsersRoleController::class, 'UserTrash'])->name('user.trash');
 Route::get('/user/restore/{id}', [UsersRoleController::class, 'UserRestoreTrash'])->name('user.restore');
 Route::get('/user/archive/{id}', [UsersRoleController::class, 'UserArchive'])->name('user.archive');
-
+Route::get('/user/delete/{id}', [UsersRoleController::class, 'destroy'])->name('user.delete');
 Route::get('/admin/edit/{id}', [UsersRoleController::class, 'EditAdmin'])->name('admin.edit');
 Route::post('/update/admin', [UsersRoleController::class, 'UpdateAdmin'])->name('update.admin');
 Route::post('/admin/insert/user', [UsersRoleController::class, 'UserInsert'])->name('user.insert');
 Route::get('/user/edit/{id}', [UsersRoleController::class, 'EditUser'])->name('user.edit');
 Route::post('/update/user', [UsersRoleController::class, 'UpdateUser'])->name('update.user');
-
 Route::post('/Profile/Update', [UsersRoleController::class, 'ProfileUpdate'])->name('profile.update');
 
 //top story

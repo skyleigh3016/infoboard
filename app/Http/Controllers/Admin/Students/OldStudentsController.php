@@ -83,6 +83,9 @@ class OldStudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('admins')->where('id', $id)->delete();
+
+        $notify = ['message'=>'Admin deleted successfully!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
     }
 }

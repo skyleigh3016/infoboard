@@ -10,6 +10,7 @@ use Auth;
 use Image;
 use File;
 use App\Imports\StudentsImport;
+use App\Models\Student;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AllStudentsController extends Controller
@@ -19,11 +20,16 @@ class AllStudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $student = DB::table('students')->get();
-
-        return view('admin.students.index', compact('student'));
+        $students = Student::when($request->department != null, function ($q) use ($request) {
+            return $q->where('department', $request->department);
+        })
+        ->when($request->c_class != null, function ($q) use ($request) {
+            return $q->where('c_class', $request->c_class);
+        })->orderBy('id', 'desc')->get();
+        
+    return view('admin.students.index', compact('students'));
     }
 
     /**
@@ -90,6 +96,7 @@ class AllStudentsController extends Controller
         // dd($data);
         DB::table('students')->insert($data);
         DB::table('validations')->insert($data1);
+        
         $notify = ['message' => 'New student successfully added!', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
     }

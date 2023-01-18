@@ -1,7 +1,11 @@
 
 
 @php
-$stories = DB::table('stories')->get();
+$stories = DB::table('stories')
+->whereNull('deleted_at')
+
+->get();
+
 
 
 @endphp
@@ -141,6 +145,25 @@ $sliders = DB::table('sliders')->get();
 
 </div>
 
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1} 
+  slides[slideIndex-1].style.display = "flex";  
+
+  setTimeout(showSlides, 25500); // Change image every 2 seconds
+}
+</script>
+
+
        
 
  <!-- ======= Why Us Section/firstline ======= -->
@@ -273,24 +296,24 @@ $sliders = DB::table('sliders')->get();
 </div>
 
 <script>
-var slideIndex = [1,1];
+var slidesIndex = [1,1];
 var slideId = ["mySlides", "phar-imag-div"]
 showDivs(1, 0);
 showDivs(1, 1);
 
 function plusDivs(n, no) {
-  showDivs(slideIndex[no] += n, no);
+  showDivs(slidesIndex[no] += n, no);
 }
 
 function showDivs(n, no) {
   var i;
   var x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}
-  if (n < 1) {slideIndex[no] = x.length}
+  if (n > x.length) {slidesIndex[no] = 1}
+  if (n < 1) {slidesIndex[no] = x.length}
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";   
   }
-  x[slideIndex[no]-1].style.display = "flex"; 
+  x[slidesIndex[no]-1].style.display = "flex"; 
 }
 </script>
 </div>

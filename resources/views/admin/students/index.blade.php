@@ -21,7 +21,38 @@ $submenu = 'Students'; ?>
                 </div>
             </div>
             <div class="card-body table-responsive">
+            <div class="mb-2" >
+                    <form class="form-inline" action="" method="GET">
+                        <label>Course &nbsp;</label>
+                        <select class="form-control"  id="department" name="department">
+                            <option disabled selected>Select Course</option>
+                            <option value="BSIS">BSIS</option>
+                            <option value="BSAIS">BSAIS</option>
+                            <option value="BSE">BSE</option>
+                            <option value="BSE">BSA</option>
+                            <option value="BSE">BSTM</option>
+                            <option value="BSE">ICT</option>
+                            <option value="BSE">ABM</option>
+                            <option value="BSE">HE</option>
+                        </select>
 
+                        <span>&nbsp;&nbsp;</span>
+                        <label for="c_class">Year &nbsp;</label>
+                        <select class="form-control" id="year_filter" name="c_class">
+                            <option disabled selected>Select Year Level</option>
+                            <option value="Grade-11">Grade-11</option>
+                            <option value="Grade-12">Grade-12</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                        <span>&nbsp;&nbsp;</span>
+                           <button type="submit" class="btn btn-primary">Search</button>  
+                        
+                    </form>
+                
+                </div>
                 <table class="table table-bordered table-striped" id="example1">
                     <thead>
                         <tr>
@@ -30,12 +61,13 @@ $submenu = 'Students'; ?>
                             <th>Name</th>
                             <th>Course</th>
                             <th>Phone</th>
-                            <th>Session</th>
+                            <th>Year Level</th>
                             <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $item)
+                    @if(count($students) > 0)
+                        @foreach ($students as $item)
                             <tr>
                                 <td>{{ $item->st_id }}</td>
                                 <td>
@@ -52,7 +84,7 @@ $submenu = 'Students'; ?>
                               
 
                                 <td>{{ $item->phone }}</td>
-                                <td>{{ $item->session }}</td>
+                                <td>{{ $item->c_class }}</td>
 
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
@@ -71,6 +103,11 @@ $submenu = 'Students'; ?>
                                 </td>
                             </tr>
                         @endforeach
+                        @else
+                <tr>
+                    <td colspan="7" class="text-center">No Data Found</td>
+                </tr>  
+            @endif
                     </tbody>
                 </table>
                 
@@ -248,7 +285,7 @@ $submenu = 'Students'; ?>
                                
                               
                                     <div class="form-group col-md-6">
-                                        <label for=" photo">Photo <small>(.cvs/)</small></label>
+                                        <label for=" photo">Import Excel<small>(.csv format)</small></label>
                                         <input class="form-control p-1" type="file" name=" file">
                                     </div>
                                

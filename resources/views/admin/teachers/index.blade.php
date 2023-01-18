@@ -21,7 +21,29 @@ $submenu = 'All_Staffs'; ?>
                 </div>
             </div>
             <div class="card-body table-responsive">
-
+                <div class="mb-2">
+                    <form class="form-inline" action="" method="GET">
+                            <label>Department &nbsp;</label>
+                            <select class="form-control" id="department" name="department">
+                                <option disabled selected>Select Department</option>
+                                <option value="Faculty">Academe</option>
+                                <option value="Registrar">Registrar</option>
+                                <option value="Learning And Development">Learning And Development</option>
+                                <option value="Finance">Finance</option>
+                                <option value="LRDE">LRDE</option>
+                                <option value="Technical and Vocational">Technical and Vocational</option>
+                                <option value="Research and Publication">Research and Publication</option>
+                                <option value="CARD Scholarship Program">CARD Scholarship Program</option>
+                                <option value="Compliance">Compliance</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="OSAS">OSAS</option>
+                                <option value="Executive Office">Executive Office</option>
+                            </select>
+                            <span>&nbsp;&nbsp;</span>
+                            <button type="submit" class="btn btn-primary">Search</button>  
+                            
+                        </form>
+                </div>
                 <table class="table table-bordered table-striped" id="example1">
                     <thead>
                         <tr>
@@ -35,7 +57,8 @@ $submenu = 'All_Staffs'; ?>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($teacher as $item)
+                    @if(count($teachers) > 0)
+                        @foreach ($teachers as $item)
                             <tr>
                                 <td>{{ $item->index }}</td>
                                 <td>
@@ -69,6 +92,11 @@ $submenu = 'All_Staffs'; ?>
                                 </td>
                             </tr>
                         @endforeach
+                        @else
+                <tr>
+                    <td colspan="7" class="text-center">No Data Found</td>
+                </tr>  
+            @endif
                     </tbody>
                 </table>
             </div>
@@ -132,6 +160,15 @@ $submenu = 'All_Staffs'; ?>
                                             <option value="Faculty">Faculty</option>
                                             <option value="OSAS">OSAS</option>
                                             <option value="Registrar">Registrar</option>
+                                            <option value="Learning And Development">Learning And Development</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="LRDE">LRDE</option>
+                                            <option value="Technical and Vocational">Technical and Vocational</option>
+                                            <option value="Research and Publication">Research and Publication</option>
+                                            <option value="CARD Scholarship Program">CARD Scholarship Program</option>
+                                            <option value="Compliance">Compliance</option>
+                                            <option value="Human Resources">Human Resources</option>
+                                            <option value="Executive Office">Executive Office</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

@@ -1,9 +1,20 @@
 @include('layouts.includes.head')
+@php
+$email = Auth::user()->email;
+
+$teachers = DB::table('teachers')->where('email', '=', $email)->first();;
+
+
+@endphp
 
 <body>
 
     <!-- Navbar-->
-    @include('layouts.includes.navbar')
+    @if($teachers)
+            @include('layouts.includes.navbar')
+        @else
+            @include('layouts.includes.navbar1')
+        @endif
 
     <div class="container-fluid mt-5">
 

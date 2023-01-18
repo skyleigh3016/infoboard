@@ -36,19 +36,22 @@ body{
 }
 .slider-info{
     font-style: bold;
-    padding: 10px 60px;
+    padding: 25px;
     text-align: center;
 }
 .owl-item.active.center .slider-item{
     opacity: 1;
     transform: scale(1);
-    ckground: #f79d00;  /* fallback for old browsers */
+    background: #f79d00;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #64f38c, #f79d00);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #a9acaa33, #f79d00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ba
+    background: linear-gradient(to right, #a9acaa33, #f79d00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .slider-title{
-    padding: 25px;
-}
+   padding-left: 10px;
+   padding-right: 10px;
+    text-align: center;
+}  
+
 .slider-description {
     font-size: 18px;
     padding-bottom: 20px;

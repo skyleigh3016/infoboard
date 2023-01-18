@@ -6,13 +6,26 @@
 $menu = 'Home';
 $rightbarImage = 'study_chat.png';
 @endphp
+@php
+$email = Auth::user()->email;
+
+$teachers = DB::table('teachers')->where('email', '=', $email)->first();;
+
+
+
+
+@endphp
 
 
 @section('content')
     <div class="row">
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
+        @if($teachers)
             @include('layouts.includes.leftbar')
+        @else
+            @include('layouts.includes.leftbar1')
+        @endif
         </div>
         {{-- Left section ended --}}
 
@@ -29,14 +42,14 @@ $rightbarImage = 'study_chat.png';
                                 alt="" class="rounded-circle" style="width: 50px">
                             <div class="w-100 ms-2"><a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                     class="btn btn-light btn-block shadow-0 btn-rounded text-start d-flex align-items-center post_btn">
-                                    Whats on your mind, {{ Auth::user()->name }}?</a></div>
+                                    What's on your mind, {{ Auth::user()->name }}?</a></div>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-around">
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
                                 class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-image text-success"></i>
                                 Photo</a>
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
                                 class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-video text-danger"></i>
                                 Video</a>
                         </div>
@@ -62,7 +75,7 @@ $rightbarImage = 'study_chat.png';
                                     <!-- Message input -->
                                     <div class="form-outline mb-4">
                                         <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
-                                        <label class="form-label" for="form4Example3">Whats on your mind,
+                                        <label class="form-label" for="form4Example3">What's on your mind,
                                             {{ Auth::user()->name }}?</label>
                                     </div>
                                     <div class="input-group ">
@@ -90,6 +103,97 @@ $rightbarImage = 'study_chat.png';
                     </div>
                 </div>
 
+
+                 <!-- Create image post Modal -->
+                 <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create
+                                    Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
+                                        <label class="form-label" for="form4Example3">What's on your mind,
+                                            {{ Auth::user()->name }}?</label>
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="bi bi-image text-success"></i></span>
+                                        <input type="file" class="form-control" name="image" id="image" />
+                                    </div>
+
+
+                                    <select class="form-select form-select-sm mt-3 w-25" name="visibility">
+                                        <option value="1">&#127758; Public</option>
+                                        <option value="0">&#128274; Only me</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                 <!-- Create video post Modal -->
+                 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i> Create
+                                    Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
+                                        <label class="form-label" for="form4Example3">What's on your mind,
+                                            {{ Auth::user()->name }}?</label>
+                                    </div>
+
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
+                                        <input type="file" class="form-control" name="video" id="video" />
+                                    </div>
+
+                                    <select class="form-select form-select-sm mt-3 w-25" name="visibility">
+                                        <option value="1">&#127758; Public</option>
+                                        <option value="0">&#128274; Only me</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
                 {{-- view posts --}}
                 @foreach ($posts as $item)
                     @php
@@ -114,7 +218,7 @@ $rightbarImage = 'study_chat.png';
                             {{-- heading options --}}
                             <div class="d-flex align-items-center">
                                 <a href="{{ route('user.profile', $item->user_id) }}">
-                                    <img src="@if ($item->user_image) {{ asset('images/users') . '/' . $item->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
+                                 <img src="@if ($item->user_image) {{ asset('images/users') . '/' . $item->user_image }} @else {{ asset('images/asset_img/user-icon.png') }} @endif"
                                         alt="" class="rounded-circle" style="width: 50px; height:50px">
                                 </a>
 
@@ -160,7 +264,7 @@ $rightbarImage = 'study_chat.png';
                                                         class="delete btn bg-transparent shadow-0 px-3 py-2"
                                                         style="font-size: 14px"><i
                                                             class="fas fa-trash-alt text-danger"></i>
-                                                        Detete</button>
+                                                        Delete</button>
                                                 </form>
                                             </a>
                                         </li>

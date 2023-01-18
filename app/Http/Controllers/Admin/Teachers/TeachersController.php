@@ -21,11 +21,16 @@ class TeachersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teacher = DB::table('teachers')->get();
+        //$teacher = DB::table('teachers')->get();
 
-        return view('admin.teachers.index', compact('teacher'));
+        $teachers = Teacher::when($request->department != null, function ($q) use ($request) {
+            return $q->where('department', $request->department);
+
+        })->orderBy('id', 'desc')->get();
+
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**

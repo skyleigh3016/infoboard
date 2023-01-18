@@ -85,6 +85,16 @@ class HscExamineeController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('bookings')->where('id', $id)->delete();
+
+        $notify = ['message'=>'Event Info Successfully Deleted!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
+
+    /*
+        DB::table('bookings')->where('id', $id)->delete();
+
+        $notify = ['message'=>'Event successfully deleted!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);*/
     }
 }

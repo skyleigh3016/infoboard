@@ -102,24 +102,46 @@ class UsersRoleController extends Controller{
 
     public function UpdateUser(Request $request){
 
-        $id = $request->input('id');
-        
-        $name_slug = Str::of($request->name)->slug('-');
-
+        // $image = $request->file('image');
         $image = $request->file('user_image');
-        $input['user_image'] = time().'-'.$name_slug.'.'.$image->getClientOriginalExtension();
 
-        $destinationPath = public_path('images/users');
-        $imgFile = Image::make($image->getRealPath());
-        $imgFile->resize(300, 300)->save($destinationPath.'/'.$input['user_image']);
+        if($image){
+            $id = $request->input('id');
+        
+            $name_slug = Str::of($request->name)->slug('-');
+    
+          
+            $input['user_image'] = time().'-'.$name_slug.'.'.$image->getClientOriginalExtension();
+    
+            $destinationPath = public_path('images/users');
+            $imgFile = Image::make($image->getRealPath());
+            $imgFile->resize(300, 300)->save($destinationPath.'/'.$input['user_image']);
+    
+            User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_image' => $input['user_image']
+                
+            ]);
+          
+           
 
-        User::find($id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'user_image' => $input['user_image']
-            
-        ]);
+        
+
+        }else{
+            $id = $request->input('id');
+
+            User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+               
+                
+            ]);        
+        
+        }
+       
         
         $notify = ['message'=>'User Info successfully updated!', 'alert-type'=>'success'];
             return redirect()->back()->with($notify);
@@ -196,6 +218,15 @@ class UsersRoleController extends Controller{
         $notify = ['message'=>'User Restored!', 'alert-type'=>'success'];
             
         return redirect()->back()->with($notify);
+    }
+    public function destroy($id)
+    {
+
+        DB::table('users')->where('id', $id)->delete();
+
+        $notify = ['message'=>'User successfully deleted!', 'alert-type'=>'success'];
+        return redirect()->back()->with($notify);
+
     }
 
 }

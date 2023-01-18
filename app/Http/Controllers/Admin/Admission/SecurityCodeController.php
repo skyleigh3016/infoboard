@@ -111,9 +111,9 @@ class SecurityCodeController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('admission_security_code')->where('id', $id)->delete();
+        DB::table('admins')->where('id', $id)->delete();
 
-        $notify = ['message'=>'Security information successfully deleted!', 'alert-type'=>'success'];
+        $notify = ['message'=>'Admin information successfully deleted!', 'alert-type'=>'success'];
         return redirect()->back()->with($notify);
     }
 }

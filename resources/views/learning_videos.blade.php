@@ -58,7 +58,7 @@
                                 </video>
                             </div>
                             <div class="slider-info">
-                                <h1 class="slider-title">{{$learning->title}}</h1>
+                                <h3 class="slider-title">{{$learning->title}}</h3>
                                 <p class="slider-description">{!!$learning->description!!}</p>
                             </div>
                  

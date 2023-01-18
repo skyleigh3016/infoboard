@@ -283,12 +283,12 @@
                 </div>
                 <!-- noticecontroller the logic to delete -->
                 <div>
-                    <form action="{{ route('routines_xii.destroy', $admin->id) }}" method="GET">
-                      @csrf
-                      <input type="hidden" name="_method" value="DELETE">
-                      <button type="submit" class="btn btn-danger btn-sm delete "><i
-                      class="bi bi-trash"></i></button>
-                    </form>
+                <form action="{{ route('security_code.destroy', $admin->id) }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger delete px-1 py-0"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
                 </div>
               </td>        
             </tr>

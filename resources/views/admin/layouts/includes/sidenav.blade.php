@@ -27,7 +27,7 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                <li class="nav-header">Super admin</li>
+             
 
                 <li class="nav-item">
                     <a href="{{ route('admin.dashboard') }}"
@@ -147,12 +147,13 @@
                     </a>
                 </li>
 
-                <li class="nav-item @if ($menu == 'Students') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'Students') active @endif">
+                <li class="nav-item ">
+                    <a href="{{ route('students.index') }}" 
+                        class="nav-link @if ($menu == 'Students') active @endif">
                         <i class="nav-icon fas fa-user-friends"></i>
-                        <p> Students <i class="fas fa-angle-right right"></i> </p>
+                        <p> All students  </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <!--<ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('students.index') }}"
                                 class="nav-link @if ($submenu == 'Students') active @endif">
@@ -189,7 +190,7 @@
                                 <p>1st Year</p>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li>
 
                 <!-- <li class="nav-item @if ($menu == 'HSC_exam') menu-open @endif">
@@ -215,12 +216,12 @@
                     </ul>
                 </li> -->
 
-                <li class="nav-item @if ($menu == 'Staffs') menu-open @endif">
-                    <a href="#" class="nav-link @if ($menu == 'Staffs') active @endif">
+                <li class="nav-item">
+                    <a href="{{ route('teachers.index') }}" class="nav-link @if ($menu == 'Staffs') active @endif">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                        <p> CMDI Staff <i class="fas fa-angle-right right"></i> </p>
+                        <p> CMDI Staff </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <!--<ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('teachers.index') }}"
                                 class="nav-link @if ($submenu == 'All_Staffs') active @endif">
@@ -256,7 +257,7 @@
                                 <p>Registrar</p>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li> 
 
                 <li class="nav-item">

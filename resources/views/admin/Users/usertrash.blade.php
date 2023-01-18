@@ -289,12 +289,12 @@
                   <i class="material-icons"style="color: rgb(0, 0, 0);font-size: 27px;">unarchive</i></a>
                 </div>
                 <div>
-                  <form action="{{ route('hsc.destroy', $user->id) }}" method="GET">
-                    @csrf
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger btn-sm delete "><i
-                    class="bi bi-trash"></i></button>
-                  </form>
+                <form action="{{route('user.delete', $user->id)}}" method="GET">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="btn btn-danger btn-sm delete ">
+                    <i class="bi bi-trash"></i></button>
+                </form>
                 </div>
               </td>
             </tr>

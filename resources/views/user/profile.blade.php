@@ -501,11 +501,11 @@ $cmnts_cnt = DB::table('post_comments')
                         </div>
                         <hr>
                         <div class="d-flex justify-content-around">
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
                                 class="btn btn-link text-dark w-50 shadow-0 py-1"><i
                                     class="fas fa-image text-success"></i>
                                 Photo</a>
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
                                 class="btn btn-link text-dark w-50 shadow-0 py-1"><i class="fas fa-video text-danger"></i>
                                 Video</a>
                         </div>
@@ -540,6 +540,94 @@ $cmnts_cnt = DB::table('post_comments')
                                         <input type="file" class="form-control" name="image" id="image" />
                                     </div>
                                     <div class="text-center my-2">or,</div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
+                                        <input type="file" class="form-control" name="video" id="video" />
+                                    </div>
+
+                                    <select class="form-select form-select-sm mt-3 w-25" name="visibility">
+                                        <option value="1">&#127758; Public</option>
+                                        <option value="0">&#128274; Only me</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Create image post Modal -->
+                  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i>
+                                    Create
+                                    Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
+                                        <label class="form-label" for="form4Example3">Whats on your mind,
+                                            {{ Auth::user()->name }}?</label>
+                                    </div>
+                                    <div class="input-group ">
+                                        <span class="input-group-text"><i class="bi bi-image text-success"></i></span>
+                                        <input type="file" class="form-control" name="image" id="image" />
+                                    </div>
+                                    
+
+                                    <select class="form-select form-select-sm mt-3 w-25" name="visibility">
+                                        <option value="1">&#127758; Public</option>
+                                        <option value="0">&#128274; Only me</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary bg-gradient btn-block ">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Create video post Modal -->
+                  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-plus-circle"></i>
+                                    Create
+                                    Post
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea class="form-control" id="form4Example3" rows="4" name="post_text"></textarea>
+                                        <label class="form-label" for="form4Example3">Whats on your mind,
+                                            {{ Auth::user()->name }}?</label>
+                                    </div>
+       
                                     <div class="input-group ">
                                         <span class="input-group-text"><i class="fas fa-video text-danger"></i></span>
                                         <input type="file" class="form-control" name="video" id="video" />
@@ -627,7 +715,7 @@ $cmnts_cnt = DB::table('post_comments')
                                                 <button type="submit"
                                                     class="delete btn bg-transparent shadow-0 px-3 py-2"
                                                     style="font-size: 14px"><i class="fas fa-trash-alt text-danger"></i>
-                                                    Detete</button>
+                                                    Delete</button>
                                             </form>
                                         </a>
                                     </li>

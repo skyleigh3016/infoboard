@@ -38,16 +38,6 @@
                     <!-- <img class="img-fluid mb-3" src="{{ asset('images/asset_img/welcome_art.png') }}" alt=""> -->
                     <img class="img-fluid mb-3" src="{{ asset('images/asset_img/cmdi.jpg') }}" alt="">
 
-                    <div class="d-flex justify-content-center mt-5">
-                        <a href="#" class="mx-2 shadow">
-                            <img src="{{ asset('images/asset_img/app-store-badge-google-play.png') }}" alt=""
-                                style="height: 50px">
-                        </a>
-                        <a href="#" class="mx-2 shadow">
-                            <img src="{{ asset('images/asset_img/Download-On-The-App-Store-PNG-Image.png') }}"
-                                alt="" style="height: 50px">
-                        </a>
-                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card px-4 py-3 rounded-8 shadow-lg">
@@ -85,10 +75,10 @@ class="form-control py-2  @error('password') is-invalid @enderror"
                                     @enderror
                                 </div>
 
-                                <div class="mb-4 form-check">
+                                <!-- <div class="mb-4 form-check">
                                     <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
                                     <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                </div>
+                                </div> -->
 
                                 <div class="d-flex justify-content-between pt-3">
 

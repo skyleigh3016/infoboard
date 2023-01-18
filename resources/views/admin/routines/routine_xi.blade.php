@@ -292,7 +292,7 @@ $(document).ready(function()
     <i class="bi bi-pencil-square" data-toggle="tooltip" data-idUpdate = "'$event->id'"></i>
 </button>
 <!-- noticecontroller the logic to delete -->
-<form action="{{ route('notice.destroy', $event->id) }}" method="post">
+<form action="{{ route('hsc_examinee.destroy', $event->id) }}" method="post">
     @csrf
     <input type="hidden" name="_method" value="DELETE">
     <button type="submit" class="btn btn-danger delete px-1 py-0"><i

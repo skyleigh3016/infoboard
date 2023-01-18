@@ -52,9 +52,9 @@
                             <div class="slider-img-body">
                                 <img  src="{{asset($announcement->image)}}" alt="Announcement image" class="slider-img">
                             </div>
-                            <div class="slider-info">
-                                <h1 class="slider-title">{{$announcement->title}}</h1>
-                                <p class="slider-description" style="font-size: 48px;">{!!$announcement->description!!}</p>
+                            <div class="slider-info" >
+                                <h2 class="slider-title">{{$announcement->title}}</h2>
+                                <p class="slider-description" style="font-size: 48px;  ">{!!$announcement->description!!}</p>
                             </div>
                         </div>
                         @endforeach

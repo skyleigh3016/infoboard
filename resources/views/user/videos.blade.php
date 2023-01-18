@@ -6,13 +6,27 @@
 $menu = 'videos';
 $rightbarImage = 'st_stressed.png';
 @endphp
+@php
+$email = Auth::user()->email;
+
+$teachers = DB::table('teachers')->where('email', '=', $email)->first();;
+
+
+
+
+@endphp
+
 
 @section('content')
     <div class="row">
         {{-- Left section started --}}
         <div class="d-none d-lg-block col-lg-3 py-md-4 scroll">
 
+        @if($teachers)
             @include('layouts.includes.leftbar')
+        @else
+            @include('layouts.includes.leftbar1')
+        @endif
         </div>
         {{-- Left section ended --}}
 
